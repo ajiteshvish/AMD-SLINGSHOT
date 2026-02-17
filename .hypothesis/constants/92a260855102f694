@@ -1,0 +1,4 @@
+# file: /Users/ajiteshvishwakarma/Documents/AMD HACKATHON/backend/app/database.py
+# hypothesis_version: 6.151.9
+
+['./trustora_dev.db', ':memory:', 'PRAGMA foreign_keys', 'foreign_keys_enabled', 'indexes', 'tables']

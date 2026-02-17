@@ -1,0 +1,178 @@
+🔐 TRUSTORA USER WORKFLOW
+🟢 STEP 1: Landing Page
+What User Sees:
+
+Trustora Logo
+
+Tagline: An Intelligent Layer of Trust for Online Shopping
+
+“Login”
+
+“Register”
+
+“Explore Demo”
+
+🔵 STEP 2: Login / Register
+Authentication Options:
+
+Email + Password
+
+Marketplace SSO (Future)
+
+Admin Login Panel
+
+🔁 STEP 3: Role Selection
+
+After login:
+
+Select Role:
+[ ] User (Consumer)
+[ ] Admin (Marketplace / Trustora Team)
+
+
+System redirects based on role.
+
+👤 USER FLOW (Consumer Side – B2C Impact)
+🟣 USER DASHBOARD
+Dashboard Overview Contains:
+
+1️⃣ Search Seller / Product
+2️⃣ Recently Viewed Sellers
+3️⃣ High Trust Sellers (Top Rated)
+4️⃣ Risk Alerts Section
+5️⃣ Trust Score Trend Panel
+
+🔎 Seller Search Flow
+
+User enters:
+
+Seller name
+OR
+
+Product link
+
+System Displays:
+
+Unified Trust Score (0–100)
+
+Trust Badge (High / Medium / Risk)
+
+Seller Ranking Position
+
+Risk Warning (if any)
+
+📊 Seller Detail Page
+
+When user clicks seller:
+
+Sections:
+1️⃣ Trust Summary Card
+
+Overall Score
+
+Badge
+
+Last Updated
+
+2️⃣ Trust Breakdown Panel
+
+Delivery Reliability %
+
+Review Authenticity %
+
+Refund Fairness %
+
+Customer Support %
+
+Behavioral Stability %
+
+3️⃣ Risk Explanation
+
+Example:
+
+“Increased refund rate in last 30 days.”
+
+4️⃣ Historical Trust Trend Graph
+
+30-day / 90-day performance
+
+5️⃣ Seller Comparison Feature
+
+User selects 2–3 sellers
+System shows side-by-side comparison
+
+🔔 Alerts Feature
+
+User can:
+
+Follow a seller
+
+Get notified if trust score drops
+
+Receive fraud alerts
+
+🛡 USER SETTINGS
+
+Notification preferences
+
+Data privacy settings
+
+Saved sellers list
+
+👨‍💼 ADMIN FLOW (Marketplace / Internal)
+🟡 ADMIN DASHBOARD
+
+Overview Panel Includes:
+
+1️⃣ Total Sellers
+2️⃣ High Risk Sellers
+3️⃣ Score Distribution Graph
+4️⃣ Refund Pattern Alerts
+5️⃣ Manipulation Detection Logs
+
+📈 Admin Seller Management
+
+Admin can:
+
+View seller performance metrics
+
+See anomaly detection reports
+
+Trigger manual review
+
+Override risk flags (if needed)
+
+🤖 AI Monitoring Panel
+
+Admin sees:
+
+Model accuracy
+
+Fake review detection stats
+
+Sentiment trend summary
+
+Inference latency (AMD stack performance)
+
+⚙ Settings
+
+Adjust trust weight distribution
+
+Configure alert thresholds
+
+API integration settings
+
+🔁 COMPLETE FLOW SUMMARY
+Login → Role Selection → 
+(User → Seller Search → Trust Insights → Compare → Alerts)
+(Admin → Seller Monitoring → Risk Analysis → AI Control Panel)
+
+🧠 Why This UX Flow Is Strong
+
+Because:
+
+✔ Clear role separation
+✔ Consumer-facing transparency
+✔ Enterprise control panel
+✔ Scalable SaaS design
+✔ Fits B2B2C model

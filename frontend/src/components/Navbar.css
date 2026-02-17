@@ -1,0 +1,72 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--nav-height);
+  padding: 0 40px;
+  background-color: var(--bg-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,   255, 255, 0.05);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.brand-icon {
+  width: 24px;
+  height: 24px;
+  background: white; /* Placeholder for logo */
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--text-primary);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-signin {
+  background: var(--text-primary);
+  color: black;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.btn-signup {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Mobile responsive adjustments could go here */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}

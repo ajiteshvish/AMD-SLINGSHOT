@@ -1,0 +1,103 @@
+INFO:     Will watch for changes in these directories: ['/Users/ajiteshvishwakarma/Documents/AMD HACKATHON/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [35231] using WatchFiles
+INFO:     Started server process [35295]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:55387 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55395 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55412 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55412 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55425 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55425 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62768 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62772 - "GET /api/sellers HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app/database.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [35295]
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+WARNING:  WatchFiles detected changes in 'app/database.py'. Reloading...
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+WARNING:  WatchFiles detected changes in 'app/database.py'. Reloading...
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+WARNING:  WatchFiles detected changes in 'app/test_database.py'. Reloading...
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+WARNING:  WatchFiles detected changes in 'app/test_database.py'. Reloading...
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+WARNING:  WatchFiles detected changes in 'app/test_database.py'. Reloading...
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+WARNING:  WatchFiles detected changes in 'app/database.py'. Reloading...
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+WARNING:  WatchFiles detected changes in 'app/database.py'. Reloading...
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+WARNING:  WatchFiles detected changes in 'app/tests/__init__.py'. Reloading...
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+WARNING:  WatchFiles detected changes in 'app/tests/test_seller_table.py', 'app/tests/__init__.py'. Reloading...
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+WARNING:  WatchFiles detected changes in 'app/tests/test_seller_table.py'. Reloading...
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+WARNING:  WatchFiles detected changes in 'app/tests/test_seller_table.py'. Reloading...
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000205072c40 (most recent call first):
+  <no Python frame>
+INFO:     Stopping reloader process [35231]

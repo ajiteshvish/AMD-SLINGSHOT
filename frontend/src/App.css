@@ -1,0 +1,7 @@
+.app-wrapper {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  overflow-x: hidden;
+}
+
+/* Add any App-specific specific styles here if needed */
