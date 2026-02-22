@@ -1,57 +1,85 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { onAuthStateChanged, signOut as firebaseSignOut } from 'firebase/auth';
-import type { User } from 'firebase/auth';
-import { auth } from '../firebase';
-import { supabase } from '../supabase';
+
+// Demo user type
+interface DemoUser {
+  id: string;
+  email: string;
+}
 
 interface AuthContextType {
-  user: User | null;
+  user: DemoUser | null;
   role: 'user' | 'admin' | null;
   loading: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  signup: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Demo credentials
+const DEMO_USERS = {
+  'demo@trustora.com': { password: 'demo123', role: 'user' as const },
+  'admin@trustora.com': { password: 'admin123', role: 'admin' as const },
+};
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<DemoUser | null>(null);
   const [role, setRole] = useState<'user' | 'admin' | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      setUser(currentUser);
-      
-      if (currentUser) {
-        // Fetch role from Supabase
-        const { data, error } = await supabase
-          .from('profiles')
-          .select('role')
-          .eq('id', currentUser.uid)
-          .single();
-        
-        if (data && !error) {
-          setRole(data.role);
-        } else {
-          setRole(null); // Role not set yet (new user)
-        }
-      } else {
-        setRole(null);
-      }
-      
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
+    // Check for existing session in localStorage
+    const storedUser = localStorage.getItem('demo_user');
+    const storedRole = localStorage.getItem('demo_role');
+    
+    if (storedUser && storedRole) {
+      setUser(JSON.parse(storedUser));
+      setRole(storedRole as 'user' | 'admin');
+    }
+    
+    setLoading(false);
   }, []);
 
+  const login = async (email: string, password: string) => {
+    // Simulate async operation
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    const demoUser = DEMO_USERS[email as keyof typeof DEMO_USERS];
+    
+    if (!demoUser || demoUser.password !== password) {
+      throw new Error('Invalid email or password');
+    }
+    
+    const user = { id: email, email };
+    setUser(user);
+    setRole(demoUser.role);
+    
+    localStorage.setItem('demo_user', JSON.stringify(user));
+    localStorage.setItem('demo_role', demoUser.role);
+  };
+
+  const signup = async (email: string) => {
+    // Simulate async operation
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // For demo, just create a user session without actually storing
+    const user = { id: email, email };
+    setUser(user);
+    // Don't set role yet - user needs to select it
+    
+    localStorage.setItem('demo_user', JSON.stringify(user));
+  };
+
   const signOut = async () => {
-    await firebaseSignOut(auth);
+    setUser(null);
     setRole(null);
+    localStorage.removeItem('demo_user');
+    localStorage.removeItem('demo_role');
   };
 
   return (
-    <AuthContext.Provider value={{ user, role, loading, signOut }}>
+    <AuthContext.Provider value={{ user, role, loading, login, signup, signOut }}>
       {!loading && children}
     </AuthContext.Provider>
   );
@@ -64,3 +92,4 @@ export const useAuth = () => {
   }
   return context;
 };
+

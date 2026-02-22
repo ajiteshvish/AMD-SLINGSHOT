@@ -5,3 +5,5 @@ pydantic
 pydantic-settings
 pytest
 hypothesis
+supabase
+postgrest

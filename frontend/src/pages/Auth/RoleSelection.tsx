@@ -1,26 +1,24 @@
 
 import { useAuth } from '../../context/AuthContext';
-import { supabase } from '../../supabase';
+import { useState } from 'react';
 
 const RoleSelection = () => {
   const { user } = useAuth();
-
+  const [loading, setLoading] = useState(false);
 
   const handleSelectRole = async (role: 'user' | 'admin') => {
     if (!user) return;
+    
+    setLoading(true);
 
-    try {
-      const { error } = await supabase
-        .from('profiles')
-        .upsert({ id: user.uid, email: user.email, role: role });
-
-      if (error) throw error;
-      
-      // Force page reload to refresh context or handle it via local state update if implemented
-      window.location.href = role === 'admin' ? '/admin' : '/dashboard';
-    } catch (err) {
-      console.error('Error updating role:', err);
-    }
+    // Simulate async operation
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Store role in localStorage
+    localStorage.setItem('demo_role', role);
+    
+    // Navigate to appropriate dashboard
+    window.location.href = role === 'admin' ? '/admin' : '/dashboard';
   };
 
   return (
@@ -33,6 +31,7 @@ const RoleSelection = () => {
           <button 
             className="role-btn" 
             onClick={() => handleSelectRole('user')}
+            disabled={loading}
           >
             <div className="role-icon">👤</div>
             <h3>Consumer</h3>
@@ -42,12 +41,15 @@ const RoleSelection = () => {
           <button 
             className="role-btn" 
             onClick={() => handleSelectRole('admin')}
+            disabled={loading}
           >
             <div className="role-icon">🛡️</div>
             <h3>Admin / Seller</h3>
             <p>Manage store reputation</p>
           </button>
         </div>
+        
+        {loading && <p className="loading-text">Setting up your account...</p>}
       </div>
     </div>
   );
