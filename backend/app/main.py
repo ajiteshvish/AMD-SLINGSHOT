@@ -1,6 +1,9 @@
 import sys
 import os
+# Add backend/ to path (for app.* imports)
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add project root to path (for ai.* imports — needed on Render)
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
