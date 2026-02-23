@@ -152,6 +152,30 @@ export function useTrustScore(sellerId: string | undefined): UseApiResult<TrustS
 }
 
 /**
+ * Hook to trigger the AI trust score analysis
+ */
+export function useAnalyzeSeller(): { analyze: (id: string) => Promise<any>, analyzing: boolean, error: Error | null } {
+  const [analyzing, setAnalyzing] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const analyze = async (sellerId: string) => {
+    try {
+      setAnalyzing(true);
+      setError(null);
+      const result = await api.analyzeSeller(sellerId);
+      return result;
+    } catch (err) {
+      setError(err as Error);
+      throw err;
+    } finally {
+      setAnalyzing(false);
+    }
+  };
+
+  return { analyze, analyzing, error };
+}
+
+/**
  * Hook to fetch trust score history
  */
 export function useTrustHistory(sellerId: string | undefined, days: number = 30): UseApiResult<TrustScore[]> {

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seller Trust Detail Analysis - Trustora</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#12b5a2",
+                        "primary-dark": "#0e8f80",
+                        "primary-light": "#d0f0ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#11211f",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2c2a",
+                        "text-main": "#111817",
+                        "text-muted": "#638884",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased min-h-screen flex flex-col">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 bg-surface-light dark:bg-surface-dark border-b border-[#e0e8e8] dark:border-[#2a3f3d] px-6 py-3 shadow-sm">
+<div class="max-w-[1280px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-text-main dark:text-white cursor-pointer">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-black tracking-tight">Trustora</h2>
+</div>
+<div class="hidden md:flex relative w-80">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-text-muted">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="w-full bg-background-light dark:bg-background-dark text-text-main dark:text-white rounded-lg border-none focus:ring-2 focus:ring-primary pl-10 pr-4 py-2 text-sm placeholder:text-text-muted" placeholder="Search sellers, marketplaces..." type="text"/>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Marketplaces</a>
+<a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Sellers</a>
+<a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Verification</a>
+<a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">API Docs</a>
+</nav>
+<div class="flex gap-3">
+<button class="hidden sm:flex items-center justify-center rounded-lg h-9 px-4 bg-transparent border border-[#e0e8e8] dark:border-[#2a3f3d] text-text-main dark:text-white text-sm font-bold hover:bg-background-light dark:hover:bg-background-dark transition-colors">
+                    Log In
+                </button>
+<button class="flex items-center justify-center rounded-lg h-9 px-4 bg-primary hover:bg-primary-dark text-white text-sm font-bold shadow-md shadow-primary/20 transition-all">
+                    Get Started
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-4 sm:px-6 py-8">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-sm text-text-muted mb-6">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Sellers</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-text-main dark:text-white font-medium">ElectroWorld Inc.</span>
+</div>
+<!-- Header Section -->
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-8 pb-8 border-b border-[#e0e8e8] dark:border-[#2a3f3d]">
+<div class="flex gap-5">
+<div class="w-20 h-20 rounded-xl bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center text-3xl font-bold text-text-muted shadow-inner" data-alt="ElectroWorld Inc. Company Logo placeholder">
+                    E
+                </div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3 flex-wrap">
+<h1 class="text-3xl md:text-4xl font-black text-text-main dark:text-white tracking-tight">ElectroWorld Inc.</h1>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+<span class="material-symbols-outlined text-[14px]">verified</span> Verified Business
+                        </span>
+</div>
+<p class="text-text-muted text-sm md:text-base flex items-center gap-2">
+                        Consumer Electronics • United States • Member since 2019
+                    </p>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex text-yellow-400 text-sm">
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star_half</span>
+</div>
+<span class="text-sm font-medium text-text-main dark:text-white">4.8 (12.4k reviews)</span>
+</div>
+</div>
+</div>
+<div class="flex gap-3 w-full lg:w-auto">
+<button class="flex-1 lg:flex-none h-11 px-6 rounded-lg border border-[#e0e8e8] dark:border-[#2a3f3d] bg-surface-light dark:bg-surface-dark text-text-main dark:text-white font-bold text-sm hover:bg-background-light dark:hover:bg-background-dark transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">share</span>
+                    Share
+                </button>
+<button class="flex-1 lg:flex-none h-11 px-6 rounded-lg bg-primary hover:bg-primary-dark text-white font-bold text-sm shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">compare_arrows</span>
+                    Compare Seller
+                </button>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
+<!-- Left Column: Trust Score & Key Metrics (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Trust Score Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-6 shadow-sm border border-[#e0e8e8] dark:border-[#2a3f3d] flex flex-col items-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-blue-500"></div>
+<div class="flex justify-between w-full items-start mb-2">
+<h3 class="text-lg font-bold text-text-main dark:text-white">Trust Score</h3>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+<span class="material-symbols-outlined text-[14px]">security</span> High Trust
+                        </span>
+</div>
+<div class="relative size-48 my-4 flex items-center justify-center">
+<!-- Simplified CSS gauge representation -->
+<svg class="size-full -rotate-90" viewbox="0 0 36 36">
+<!-- Background Circle -->
+<path class="text-gray-200 dark:text-gray-700" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="2.5"></path>
+<!-- Progress Circle (94%) -->
+<path class="text-primary drop-shadow-[0_0_10px_rgba(18,181,162,0.4)]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="94, 100" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-5xl font-black text-text-main dark:text-white tracking-tighter">94</span>
+<span class="text-sm font-medium text-text-muted">out of 100</span>
+</div>
+</div>
+<p class="text-center text-sm text-text-muted mb-4">
+                        Based on analysis of 12.4k transactions and external signals.
+                    </p>
+<div class="w-full bg-background-light dark:bg-background-dark rounded-xl p-4 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs text-text-muted font-medium uppercase tracking-wider">Trend</span>
+<span class="text-sm font-bold text-green-600 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +2% vs last month
+                            </span>
+</div>
+<div class="h-8 w-px bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col items-end">
+<span class="text-xs text-text-muted font-medium uppercase tracking-wider">Percentile</span>
+<span class="text-sm font-bold text-text-main dark:text-white">Top 5%</span>
+</div>
+</div>
+</div>
+<!-- Risk Explanation Box -->
+<div class="bg-amber-50 dark:bg-amber-900/10 rounded-2xl p-5 border border-amber-100 dark:border-amber-800/30">
+<div class="flex items-start gap-3">
+<div class="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg text-amber-700 dark:text-amber-500 shrink-0">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-amber-900 dark:text-amber-400 mb-1">Minor Risk Detected</h4>
+<p class="text-sm text-amber-800/80 dark:text-amber-300/80 leading-relaxed">
+                                Recent increase in "Shipping Delay" reports in the last 7 days. This is 12% higher than the category average.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Breakdown & Charts (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Trust Breakdown Section -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-6 shadow-sm border border-[#e0e8e8] dark:border-[#2a3f3d]">
+<h3 class="text-xl font-bold text-text-main dark:text-white mb-6">Trust Breakdown</h3>
+<div class="space-y-6">
+<!-- Item 1 -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[20px]">local_shipping</span>
+<span class="text-sm font-bold text-text-main dark:text-white">Delivery Reliability</span>
+</div>
+<span class="text-sm font-bold text-primary">98/100</span>
+</div>
+<div class="h-2.5 w-full bg-background-light dark:bg-background-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<!-- Item 2 -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[20px]">rate_review</span>
+<span class="text-sm font-bold text-text-main dark:text-white">Review Authenticity</span>
+</div>
+<span class="text-sm font-bold text-primary">92/100</span>
+</div>
+<div class="h-2.5 w-full bg-background-light dark:bg-background-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<!-- Item 3 -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[20px]">currency_exchange</span>
+<span class="text-sm font-bold text-text-main dark:text-white">Refund Fairness</span>
+</div>
+<span class="text-sm font-bold text-primary">88/100</span>
+</div>
+<div class="h-2.5 w-full bg-background-light dark:bg-background-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<!-- Item 4 -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[20px]">support_agent</span>
+<span class="text-sm font-bold text-text-main dark:text-white">Customer Support</span>
+</div>
+<span class="text-sm font-bold text-primary">95/100</span>
+</div>
+<div class="h-2.5 w-full bg-background-light dark:bg-background-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 95%"></div>
+</div>
+</div>
+<!-- Item 5 -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[20px]">psychology</span>
+<span class="text-sm font-bold text-text-main dark:text-white">Behavioral Stability</span>
+</div>
+<span class="text-sm font-bold text-primary">85/100</span>
+</div>
+<div class="h-2.5 w-full bg-background-light dark:bg-background-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Historical Trend Chart -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-6 shadow-sm border border-[#e0e8e8] dark:border-[#2a3f3d] flex-1">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-text-main dark:text-white">Historical Trust Trend</h3>
+<select class="bg-background-light dark:bg-background-dark border-none text-xs font-medium text-text-main dark:text-white rounded-lg py-1 px-3 cursor-pointer focus:ring-1 focus:ring-primary">
+<option>Last 6 Months</option>
+<option>Last Year</option>
+<option>All Time</option>
+</select>
+</div>
+<div class="relative h-48 w-full flex items-end justify-between gap-2 px-2">
+<!-- Chart Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between text-xs text-text-muted pointer-events-none z-0">
+<div class="w-full border-b border-dashed border-gray-200 dark:border-gray-700 h-0"></div>
+<div class="w-full border-b border-dashed border-gray-200 dark:border-gray-700 h-0"></div>
+<div class="w-full border-b border-dashed border-gray-200 dark:border-gray-700 h-0"></div>
+<div class="w-full border-b border-gray-200 dark:border-gray-700 h-0"></div>
+</div>
+<!-- Simulated Line Chart with CSS Gradients/Paths -->
+<svg class="absolute inset-0 w-full h-full z-10 overflow-visible" preserveaspectratio="none">
+<!-- Gradient Fill Area -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#12b5a2" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#12b5a2" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path class="text-primary" d="M0,120 C50,110 100,130 150,100 C200,70 250,80 300,60 C350,40 400,50 450,30 C500,10 550,20 800,10 L800,192 L0,192 Z" fill="url(#chartGradient)"></path>
+<!-- The Line -->
+<path d="M0,120 C50,110 100,130 150,100 C200,70 250,80 300,60 C350,40 400,50 450,30 C500,10 550,20 800,10" fill="none" stroke="#12b5a2" stroke-width="3" vector-effect="non-scaling-stroke"></path>
+<!-- Points -->
+<circle class="fill-surface-light dark:fill-surface-dark stroke-primary stroke-2" cx="150" cy="100" r="4"></circle>
+<circle class="fill-surface-light dark:fill-surface-dark stroke-primary stroke-2" cx="300" cy="60" r="4"></circle>
+<circle class="fill-surface-light dark:fill-surface-dark stroke-primary stroke-2" cx="450" cy="30" r="4"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="absolute -bottom-6 left-0 right-0 flex justify-between text-xs text-text-muted px-2">
+<span>Jan</span>
+<span>Feb</span>
+<span>Mar</span>
+<span>Apr</span>
+<span>May</span>
+<span>Jun</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table Section -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl shadow-sm border border-[#e0e8e8] dark:border-[#2a3f3d] overflow-hidden">
+<div class="p-6 border-b border-[#e0e8e8] dark:border-[#2a3f3d] flex flex-wrap gap-4 justify-between items-center">
+<h3 class="text-xl font-bold text-text-main dark:text-white">Recent Trust Signals</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-lg text-xs font-medium bg-background-light dark:bg-background-dark text-text-main dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Filter</button>
+<button class="px-3 py-1.5 rounded-lg text-xs font-medium bg-background-light dark:bg-background-dark text-text-main dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Export</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-background-light dark:bg-background-dark text-text-muted uppercase text-xs tracking-wider font-semibold">
+<tr>
+<th class="px-6 py-4">Date</th>
+<th class="px-6 py-4">Signal Type</th>
+<th class="px-6 py-4">Source</th>
+<th class="px-6 py-4">Impact</th>
+<th class="px-6 py-4 text-right">Details</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e0e8e8] dark:divide-[#2a3f3d]">
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors">
+<td class="px-6 py-4 text-text-main dark:text-white">Oct 24, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Positive
+                                </span>
+</td>
+<td class="px-6 py-4 text-text-muted">Verified Purchase Review</td>
+<td class="px-6 py-4 text-green-600 font-medium">+0.5 pts</td>
+<td class="px-6 py-4 text-right text-primary hover:text-primary-dark cursor-pointer font-medium">View</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors">
+<td class="px-6 py-4 text-text-main dark:text-white">Oct 22, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300">
+<span class="material-symbols-outlined text-[14px]">remove</span> Neutral
+                                </span>
+</td>
+<td class="px-6 py-4 text-text-muted">Business Registration Update</td>
+<td class="px-6 py-4 text-text-muted font-medium">0 pts</td>
+<td class="px-6 py-4 text-right text-primary hover:text-primary-dark cursor-pointer font-medium">View</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors">
+<td class="px-6 py-4 text-text-main dark:text-white">Oct 20, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300">
+<span class="material-symbols-outlined text-[14px]">report_problem</span> Negative
+                                </span>
+</td>
+<td class="px-6 py-4 text-text-muted">Shipping Delay Report</td>
+<td class="px-6 py-4 text-red-600 font-medium">-1.2 pts</td>
+<td class="px-6 py-4 text-right text-primary hover:text-primary-dark cursor-pointer font-medium">View</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-[#e0e8e8] dark:border-[#2a3f3d] bg-background-light/30 dark:bg-background-dark/30 flex justify-center">
+<button class="text-sm font-bold text-primary hover:text-primary-dark transition-colors">View All Signals</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-[#e0e8e8] dark:border-[#2a3f3d] py-12 mt-8">
+<div class="max-w-[1280px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 text-text-main dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="font-bold text-lg">Trustora</span>
+</div>
+<p class="text-sm text-text-muted">Building trust in the digital economy through AI-powered intelligence.</p>
+</div>
+<div>
+<h4 class="font-bold text-text-main dark:text-white mb-4">Platform</h4>
+<ul class="space-y-2 text-sm text-text-muted">
+<li><a class="hover:text-primary" href="#">Trust Score</a></li>
+<li><a class="hover:text-primary" href="#">API Integration</a></li>
+<li><a class="hover:text-primary" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main dark:text-white mb-4">Company</h4>
+<ul class="space-y-2 text-sm text-text-muted">
+<li><a class="hover:text-primary" href="#">About Us</a></li>
+<li><a class="hover:text-primary" href="#">Careers</a></li>
+<li><a class="hover:text-primary" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main dark:text-white mb-4">Legal</h4>
+<ul class="space-y-2 text-sm text-text-muted">
+<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-6 mt-12 pt-8 border-t border-[#e0e8e8] dark:border-[#2a3f3d] text-center text-sm text-text-muted">
+            © 2023 Trustora Inc. All rights reserved.
+        </div>
+</footer>
+</body></html>

@@ -1,21 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Global Styles for Nexros-inspired Design */
+@layer base {
+  :root {
+    /* Base Nexros colors */
+    --background: 0 0% 2%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 2%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 2%;
+    --popover-foreground: 0 0% 100%;
+    
+    /* Trustora Primary: Deep Blue #1E3A8A */
+    --primary: 224 64% 33%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 215 20% 65%;
+    
+    /* Accent: Teal #14B8A6 */
+    --accent: 173 80% 40%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Risk: Red #EF4444 */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 224 64% 33%;
+    --radius: 0.5rem;
+
+    /* Semantic Trust Colors */
+    --trust-high: 142 71% 45%; /* Green #22C55E */
+    --trust-medium: 38 92% 50%; /* Amber #F59E0B */
+    --trust-risk: 0 84% 60%; /* Red #EF4444 */
+    
+    /* Consumer UI Background: Light Gray #F8FAFC */
+    --trustora-bg: 210 40% 98%;
+  }
+}
+
 :root {
-  --bg-color: #050505; /* Deepest black */
+  --bg-color: #050505;
+  /* Deepest black */
   --bg-card: rgba(255, 255, 255, 0.03);
   --bg-card-hover: rgba(255, 255, 255, 0.07);
   --text-primary: #ffffff;
   --text-secondary: #94a3b8;
-  --accent-primary: #8b5cf6; /* Violet */
-  --accent-secondary: #ec4899; /* Pink */
-  --accent-tertiary: #06b6d4; /* Cyan */
+  --accent-primary: #8b5cf6;
+  /* Violet */
+  --accent-secondary: #ec4899;
+  /* Pink */
+  --accent-tertiary: #06b6d4;
+  /* Cyan */
   --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #06b6d4 100%);
   --border-color: rgba(255, 255, 255, 0.1);
   --font-main: "Inter", "Outfit", system-ui, -apple-system, sans-serif;
   --container-width: 1200px;
   --nav-height: 80px;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -80,7 +130,12 @@ button {
 }
 
 /* Typography Utilities */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.1;
   font-weight: 700;
   color: var(--text-primary);
@@ -165,5 +220,3 @@ h1 {
   color: transparent;
   display: inline-block;
 }
-
-

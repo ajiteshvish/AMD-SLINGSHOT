@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trustora Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2332",
+                        "surface-light": "#ffffff",
+                        "accent-green": "#0bda5e",
+                        "accent-red": "#fa6238",
+                        "border-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Sidebar -->
+<div class="w-64 flex-shrink-0 border-r border-border-dark bg-background-dark flex flex-col justify-between p-4 h-full overflow-y-auto">
+<div class="flex flex-col gap-6">
+<!-- Branding -->
+<div class="flex gap-3 items-center px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Trustora logo abstract T" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDGx5DKN2ctArSDaDfxVSAE8k8RtwQVRdCoXic87QYWKHcCTdsvqEvzQOs0-6zrLQwqYM27vG86zFufu9TZIDRa64K6xAwcZ45d26NrBPOLvFfPRnmCyzM0Lcox0VTZK32NBFweJXadLHjuZsC5W9eJEO8q-RyxgnvVjkZeQaasvFfepSbnLKWf4nQGRIrEzo4wdQw1ebwHrBdc2dtQCTtvH0jXIEhm-VYjupWp5-Mz7DWxeYUQlJQ14ywEohybYQpGIf-g9-yZaEo");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-bold leading-normal">Trustora</h1>
+<p class="text-slate-400 text-xs font-normal leading-normal">Trust Intelligence</p>
+</div>
+</div>
+<!-- Navigation -->
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">dashboard</span>
+<p class="text-sm font-medium leading-normal">Overview</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-surface-dark text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">group</span>
+<p class="text-sm font-medium leading-normal">Seller Monitoring</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-surface-dark text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">warning</span>
+<p class="text-sm font-medium leading-normal">Risk Alerts</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-surface-dark text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">smart_toy</span>
+<p class="text-sm font-medium leading-normal">AI Monitoring</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-surface-dark text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">tune</span>
+<p class="text-sm font-medium leading-normal">Model Settings</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-surface-dark text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">code</span>
+<p class="text-sm font-medium leading-normal">API Config</p>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-surface-dark text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">description</span>
+<p class="text-sm font-medium leading-normal">Documentation</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-surface-dark text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">help</span>
+<p class="text-sm font-medium leading-normal">Support</p>
+</a>
+<div class="mt-4 pt-4 border-t border-border-dark px-2 flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white">JD</div>
+<div class="flex flex-col">
+<p class="text-white text-xs font-medium">Jane Doe</p>
+<p class="text-slate-500 text-[10px]">Admin</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Top Header (Optional search/actions) -->
+<header class="h-16 flex items-center justify-between px-8 border-b border-border-dark bg-background-dark/50 backdrop-blur-sm z-10">
+<div class="flex items-center gap-4 text-slate-400">
+<p class="text-sm font-medium">Dashboard / Overview</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-slate-500 text-lg">search</span>
+<input class="bg-surface-dark border-none rounded-lg text-sm text-white pl-9 pr-4 py-1.5 focus:ring-1 focus:ring-primary w-64 placeholder-slate-600" placeholder="Search sellers, IDs..." type="text"/>
+</div>
+<button class="relative p-2 text-slate-400 hover:text-white">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-accent-red rounded-full"></span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<main class="flex-1 overflow-y-auto p-8">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-8">
+<!-- Page Header -->
+<div class="flex flex-col gap-2">
+<h2 class="text-white text-3xl font-bold tracking-tight">Dashboard Overview</h2>
+<p class="text-slate-400 text-sm">Real-time trust and safety metrics across your marketplace.</p>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1 -->
+<div class="bg-surface-dark rounded-xl p-6 border border-border-dark flex flex-col justify-between h-32 relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-primary/10 rounded-full blur-xl -mr-6 -mt-6 group-hover:bg-primary/20 transition-all"></div>
+<div class="flex justify-between items-start z-10">
+<p class="text-slate-400 text-sm font-medium">Total Sellers</p>
+<span class="material-symbols-outlined text-slate-500">storefront</span>
+</div>
+<div class="flex items-end gap-3 z-10">
+<p class="text-white text-3xl font-bold">12,450</p>
+<div class="flex items-center text-accent-green text-xs font-medium bg-accent-green/10 px-1.5 py-0.5 rounded mb-1">
+<span class="material-symbols-outlined text-sm mr-0.5">trending_up</span>
+                                    12%
+                                </div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-dark rounded-xl p-6 border border-border-dark flex flex-col justify-between h-32 relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-accent-red/10 rounded-full blur-xl -mr-6 -mt-6 group-hover:bg-accent-red/20 transition-all"></div>
+<div class="flex justify-between items-start z-10">
+<p class="text-slate-400 text-sm font-medium">High Risk Sellers</p>
+<span class="material-symbols-outlined text-slate-500">warning</span>
+</div>
+<div class="flex items-end gap-3 z-10">
+<p class="text-white text-3xl font-bold">342</p>
+<div class="flex items-center text-accent-red text-xs font-medium bg-accent-red/10 px-1.5 py-0.5 rounded mb-1">
+<span class="material-symbols-outlined text-sm mr-0.5">trending_up</span>
+                                    5%
+                                </div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-dark rounded-xl p-6 border border-border-dark flex flex-col justify-between h-32 relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-orange-500/10 rounded-full blur-xl -mr-6 -mt-6 group-hover:bg-orange-500/20 transition-all"></div>
+<div class="flex justify-between items-start z-10">
+<p class="text-slate-400 text-sm font-medium">Fake Review Flags</p>
+<span class="material-symbols-outlined text-slate-500">reviews</span>
+</div>
+<div class="flex items-end gap-3 z-10">
+<p class="text-white text-3xl font-bold">1,890</p>
+<div class="flex items-center text-accent-green text-xs font-medium bg-accent-green/10 px-1.5 py-0.5 rounded mb-1">
+<span class="material-symbols-outlined text-sm mr-0.5">trending_up</span>
+                                    2.3%
+                                </div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-dark rounded-xl p-6 border border-border-dark flex flex-col justify-between h-32 relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-blue-500/10 rounded-full blur-xl -mr-6 -mt-6 group-hover:bg-blue-500/20 transition-all"></div>
+<div class="flex justify-between items-start z-10">
+<p class="text-slate-400 text-sm font-medium">Avg Trust Score</p>
+<span class="material-symbols-outlined text-slate-500">shield</span>
+</div>
+<div class="flex items-end gap-3 z-10">
+<p class="text-white text-3xl font-bold">78<span class="text-lg text-slate-500 font-normal">/100</span></p>
+<div class="flex items-center text-accent-red text-xs font-medium bg-accent-red/10 px-1.5 py-0.5 rounded mb-1">
+<span class="material-symbols-outlined text-sm mr-0.5">trending_down</span>
+                                    1.1%
+                                </div>
+</div>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Chart 1: Trust Score Distribution -->
+<div class="bg-surface-dark rounded-xl border border-border-dark p-6 flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-white text-lg font-semibold">Trust Score Distribution</h3>
+<p class="text-slate-400 text-sm">Seller count by score range</p>
+</div>
+<select class="bg-background-dark border border-border-dark text-slate-300 text-xs rounded-lg px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option>Last 30 Days</option>
+<option>Last 7 Days</option>
+<option>Last 24 Hours</option>
+</select>
+</div>
+<div class="flex-1 min-h-[200px] flex items-end justify-between gap-4 px-2">
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-slate-700/30 rounded-t-sm h-[200px] relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-accent-red opacity-80 h-[15%] group-hover:opacity-100 transition-opacity"></div>
+</div>
+<span class="text-slate-400 text-xs font-medium">0-20</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-slate-700/30 rounded-t-sm h-[200px] relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-orange-500 opacity-80 h-[25%] group-hover:opacity-100 transition-opacity"></div>
+</div>
+<span class="text-slate-400 text-xs font-medium">21-40</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-slate-700/30 rounded-t-sm h-[200px] relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-yellow-500 opacity-80 h-[40%] group-hover:opacity-100 transition-opacity"></div>
+</div>
+<span class="text-slate-400 text-xs font-medium">41-60</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-slate-700/30 rounded-t-sm h-[200px] relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary opacity-80 h-[65%] group-hover:opacity-100 transition-opacity"></div>
+</div>
+<span class="text-slate-400 text-xs font-medium">61-80</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-slate-700/30 rounded-t-sm h-[200px] relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-accent-green opacity-80 h-[30%] group-hover:opacity-100 transition-opacity"></div>
+</div>
+<span class="text-slate-400 text-xs font-medium">81-100</span>
+</div>
+</div>
+</div>
+<!-- Chart 2: Refund Trend -->
+<div class="bg-surface-dark rounded-xl border border-border-dark p-6 flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-white text-lg font-semibold">Refund Trend</h3>
+<p class="text-slate-400 text-sm">Daily refund requests over time</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-accent-green text-sm font-bold">+5%</span>
+<span class="text-slate-500 text-xs">vs last period</span>
+</div>
+</div>
+<div class="flex-1 min-h-[200px] relative flex flex-col justify-between pt-4">
+<!-- SVG Chart placeholder -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 150">
+<defs>
+<lineargradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#1152d4" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#1152d4" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,150 L0,100 C50,100 50,40 100,40 C150,40 150,90 200,90 C250,90 250,20 300,20 C350,20 350,70 400,70 L400,150 Z" fill="url(#gradient)" stroke="none"></path>
+<path d="M0,100 C50,100 50,40 100,40 C150,40 150,90 200,90 C250,90 250,20 300,20 C350,20 350,70 400,70" fill="none" stroke="#1152d4" stroke-linecap="round" stroke-width="3"></path>
+<!-- Points -->
+<circle class="fill-background-dark stroke-primary stroke-2" cx="100" cy="40" r="4"></circle>
+<circle class="fill-background-dark stroke-primary stroke-2" cx="200" cy="90" r="4"></circle>
+<circle class="fill-background-dark stroke-primary stroke-2" cx="300" cy="20" r="4"></circle>
+</svg>
+<div class="flex justify-between mt-2 px-1">
+<span class="text-slate-500 text-xs">W1</span>
+<span class="text-slate-500 text-xs">W2</span>
+<span class="text-slate-500 text-xs">W3</span>
+<span class="text-slate-500 text-xs">W4</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Risk Alerts Table -->
+<div class="bg-surface-dark rounded-xl border border-border-dark overflow-hidden">
+<div class="px-6 py-4 border-b border-border-dark flex justify-between items-center bg-surface-dark">
+<h3 class="text-white text-lg font-semibold">Recent Risk Alerts</h3>
+<button class="text-primary text-sm font-medium hover:text-blue-400">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-background-dark/50 text-slate-400 font-medium">
+<tr>
+<th class="px-6 py-3">Seller Name</th>
+<th class="px-6 py-3">Risk Level</th>
+<th class="px-6 py-3">Detected Issue</th>
+<th class="px-6 py-3">Date Detected</th>
+<th class="px-6 py-3 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-dark">
+<!-- Row 1 -->
+<tr class="hover:bg-background-dark/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-700 bg-cover bg-center" data-alt="Seller Avatar E" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCeUEcMDVWn9lztm4aD8zLpcYXNer5oORLJYFQwr6NpiQB-dehQIJvremCe94EmABoggUzJqt6xYh339AMsBwpeGjm2hEgxEL0ssUHvY9gcFB1Ngde0_RdjpLw3D5V_xdRxa4xi77TzW-9jwRxJIJlCmBL724cn2uWzRBoC5yNRiB-rD4LT-4WfskaDgudMi4jDs9pawNVs3JiXJtpeZCYCueQRDwy8c3jhjRKRxuq_cyv50244jkP-jsBJHS0b2LXTg2wjmcu2cJA");'></div>
+<div>
+<p class="text-white font-medium">ElectroWorld Inc.</p>
+<p class="text-slate-500 text-xs">ID: #88234</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-500 border border-red-500/20">
+<span class="size-1.5 rounded-full bg-red-500"></span>
+                                                Critical
+                                            </span>
+</td>
+<td class="px-6 py-4 text-slate-300">
+                                            Sudden spike in negative reviews (Bot Activity)
+                                        </td>
+<td class="px-6 py-4 text-slate-400">
+                                            Oct 24, 2023
+                                        </td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-700">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-background-dark/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-700 bg-cover bg-center" data-alt="Seller Avatar G" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDG1aH8myuKPKOVByUxANZoMqx2Ov_NKjZjIG_mdsTLYQ9f7c3J2zbPIT2dzRpHR9KzH-WouftCGkAT79xA9NkdA2wchJVFbAvCx2ez8Vlf7afNL0y96PpAwu_bptjxSfpFJcGmdwwcwVS7xbiM8k7MhFsjRInTckkMPiEXFghQaJDU0nPSZ6_JlOuPRo9pRRGm533EOGsJwkobSIrwhtWcWX3BieEpVqXa5PUKpQ7G5Lygzc-mdCM9WEVXld3PacOvexyboedRw2g");'></div>
+<div>
+<p class="text-white font-medium">Gadget Haven</p>
+<p class="text-slate-500 text-xs">ID: #99102</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-orange-500/10 text-orange-500 border border-orange-500/20">
+<span class="size-1.5 rounded-full bg-orange-500"></span>
+                                                High
+                                            </span>
+</td>
+<td class="px-6 py-4 text-slate-300">
+                                            Unusual refund pattern detected
+                                        </td>
+<td class="px-6 py-4 text-slate-400">
+                                            Oct 23, 2023
+                                        </td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-700">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-background-dark/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-700 bg-cover bg-center" data-alt="Seller Avatar F" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_CSi13QbO8uNagio9LZR1IJLPDoSA6XCwkMVn-mKVcHLWQu6TwVAjQ3qZGigq82qxpjSEZF6fZS2oEYJLO2ZgmthyoDlHLMEWDWlAy1yFRpI6hGckTB_zjXZMQMZ-H_espVudOV0IeIq_E3Wv0Awe25FXPoqQOcFGxiFdPojDD-JB63pmJ6vAdygeJ1MlIxMPEBakBlKePNjFuGwr-kplYY98yR5UdiNEuwXAfbA5_6Zs5TlIaRQE882uRo8yGL6iPPWmGJy3XHQ");'></div>
+<div>
+<p class="text-white font-medium">Fashion Forward</p>
+<p class="text-slate-500 text-xs">ID: #77210</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">
+<span class="size-1.5 rounded-full bg-yellow-500"></span>
+                                                Medium
+                                            </span>
+</td>
+<td class="px-6 py-4 text-slate-300">
+                                            Incomplete business verification documents
+                                        </td>
+<td class="px-6 py-4 text-slate-400">
+                                            Oct 22, 2023
+                                        </td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-700">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-background-dark/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-700 bg-cover bg-center" data-alt="Seller Avatar T" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDrxsva8v83xJgKqYkM2gsEISI4_E7KsXTqPLCl8zdgqGXLYB-LK7Fi4Qg4OseVc7MIgGSYO6vEg6ePIPKgdaEXmZgDEsmT1rv0yKVoHKfH9btmWlbFUCileO4K0Rh35N6Tzrafk14-Ds55kCPW6gV-sIdMRt8lIgK2iNC3je5LPzpLSdLq0BPML7fsSuwWZpSCu910IWKTnNDAgM5Kg_9E7zukcnDTZl9vZnyqjRpiuhGyilH9RdB1NUUi0VW08AcAx6QWM-e8ijA");'></div>
+<div>
+<p class="text-white font-medium">TechNova Suppliers</p>
+<p class="text-slate-500 text-xs">ID: #44201</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-500 border border-red-500/20">
+<span class="size-1.5 rounded-full bg-red-500"></span>
+                                                Critical
+                                            </span>
+</td>
+<td class="px-6 py-4 text-slate-300">
+                                            Counterfeit product complaints &gt; 5%
+                                        </td>
+<td class="px-6 py-4 text-slate-400">
+                                            Oct 21, 2023
+                                        </td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-700">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-3 border-t border-border-dark flex justify-between items-center bg-surface-dark">
+<p class="text-slate-500 text-xs">Showing 1-4 of 24 alerts</p>
+<div class="flex gap-2">
+<button class="px-2 py-1 text-slate-400 hover:text-white disabled:opacity-50">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="px-2 py-1 text-slate-400 hover:text-white">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

@@ -26,7 +26,7 @@ import {
 } from './mockData';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
-const USE_MOCK_DATA = import.meta.env.VITE_USE_MOCK_DATA === 'true';
+const USE_MOCK_DATA = import.meta.env.VITE_USE_MOCK_DATA === 'true' || false;
 
 class ApiService {
   private client: AxiosInstance;
@@ -114,10 +114,19 @@ class ApiService {
       const response = await this.client.get<TrustScore>(`/sellers/${sellerId}/trust-score`);
       return response.data;
     } catch (error) {
-      console.warn('Using mock data for trust score');
-      this.useMockData = true;
+      console.warn('Using mock data for trust score', error);
       return mockTrustHistory[0];
     }
+  }
+
+  async analyzeSeller(sellerId: string): Promise<any> {
+      try {
+        const response = await this.client.post(`/sellers/${sellerId}/analyze`);
+        return response.data;
+      } catch (error) {
+        console.error('Failed to trigger AI Analysis', error);
+        throw error;
+      }
   }
 
   async getTrustHistory(sellerId: string, days: number = 30): Promise<TrustScore[]> {
@@ -184,7 +193,6 @@ class ApiService {
       return response.data;
     } catch (error) {
       console.warn('Using mock data for comparison');
-      this.useMockData = true;
       const sellers = sellerIds.map(id => mockSellers.find(s => s.id === id)).filter(Boolean);
       return {
         sellers: sellers.map(s => ({

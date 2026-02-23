@@ -12,8 +12,13 @@ import Register from './pages/Auth/Register';
 import RoleSelection from './pages/Auth/RoleSelection';
 import UserDashboard from './pages/User/UserDashboard';
 import SellerDetails from './pages/User/SellerDetails';
+import CompareSellers from './pages/User/CompareSellers';
+import Alerts from './pages/User/Alerts';
+import Settings from './pages/User/Settings';
 import AdminDashboard from './pages/Admin/AdminDashboard';
+import { SellerMonitoring, RiskAlerts, AIMonitoring, ModelSettings, APIConfiguration } from './pages/Admin/AdminPlaceholders';
 import IntelligenceDashboard from './pages/Intelligence/IntelligenceDashboard'; // Import Intelligence Dashboard
+import Demo from './pages/Demo';
 
 // Styles
 import './App.css';
@@ -28,23 +33,31 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
+          <Route path="/demo" element={<Demo />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
-             <Route path="/role-selection" element={<RoleSelection />} />
+            <Route path="/role-selection" element={<RoleSelection />} />
           </Route>
 
           <Route element={<ProtectedRoute allowedRoles={['user']} />}>
-             <Route path="/dashboard" element={<UserDashboard />} />
-             <Route path="/seller/:id" element={<SellerDetails />} />
-             <Route path="/intelligence" element={<IntelligenceDashboard />} /> {/* New Route */}
-             {/* Add Comparison route if needed */}
+            <Route path="/dashboard" element={<UserDashboard />} />
+            <Route path="/seller/:id" element={<SellerDetails />} />
+            <Route path="/intelligence" element={<IntelligenceDashboard />} /> {/* New Route */}
+            <Route path="/compare" element={<CompareSellers />} />
+            <Route path="/alerts" element={<Alerts />} />
+            <Route path="/settings" element={<Settings />} />
           </Route>
 
           <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
-             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/monitoring" element={<SellerMonitoring />} />
+            <Route path="/admin/alerts" element={<RiskAlerts />} />
+            <Route path="/admin/ai" element={<AIMonitoring />} />
+            <Route path="/admin/model" element={<ModelSettings />} />
+            <Route path="/admin/api" element={<APIConfiguration />} />
           </Route>
 
         </Routes>

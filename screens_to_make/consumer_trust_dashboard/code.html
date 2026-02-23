@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trustora Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3b1e8a",
+                        "secondary": "#1E3A8A", 
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#161220",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1f1b2e",
+                        "text-primary-light": "#131217",
+                        "text-secondary-light": "#6e6685",
+                        "text-primary-dark": "#e2e8f0",
+                        "text-secondary-dark": "#94a3b8",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .sidebar-link.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        .sidebar-link:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark transition-colors duration-200">
+<div class="flex min-h-screen w-full overflow-hidden">
+<!-- Sidebar -->
+<aside class="flex w-64 flex-col bg-secondary text-white transition-all duration-300 ease-in-out shrink-0">
+<div class="flex h-16 items-center px-6 border-b border-white/10">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center rounded-lg bg-white/10 p-1.5">
+<span class="material-symbols-outlined text-white" style="font-size: 24px;">verified_user</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-none tracking-tight">Trustora</h1>
+<p class="text-xs text-white/60 mt-0.5 font-medium">Trust Intelligence</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto px-3 py-6 space-y-1">
+<a class="sidebar-link active flex items-center gap-3 rounded-lg px-3 py-2.5 text-white/90 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="sidebar-link flex items-center gap-3 rounded-lg px-3 py-2.5 text-white/70 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+<span class="text-sm font-medium">Search Seller</span>
+</a>
+<a class="sidebar-link flex items-center gap-3 rounded-lg px-3 py-2.5 text-white/70 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">compare_arrows</span>
+<span class="text-sm font-medium">Compare Sellers</span>
+</a>
+<a class="sidebar-link flex items-center gap-3 rounded-lg px-3 py-2.5 text-white/70 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">notifications</span>
+<span class="text-sm font-medium">Alerts</span>
+</a>
+<a class="sidebar-link flex items-center gap-3 rounded-lg px-3 py-2.5 text-white/70 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">bookmark</span>
+<span class="text-sm font-medium">Saved Sellers</span>
+</a>
+</nav>
+<div class="p-3 border-t border-white/10">
+<a class="sidebar-link flex items-center gap-3 rounded-lg px-3 py-2.5 text-white/70 transition-colors mb-2" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<div class="flex items-center gap-3 rounded-lg bg-white/5 p-3 mt-auto">
+<img alt="User Profile" class="size-9 rounded-full object-cover border border-white/10" data-alt="Portrait of a woman with curly hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkUUSmU2unG96BUB66mtVoOGxTJmSJ1P5jOzAaMvax5wAI3jTyALJoL54a99HapubqFeQt1KZcPHeZcULuZcvCzKitLlZ8a_aAPr7Vuw8Po0cS2KFS97McuQVT_VpsMmPrbVl0nVoD1Zc087hWUjRz_8541M6GOpvfUv7E5P-4gA69l6-P4FmMhPkQlhvPPoG1Or9jy6OB63rh1XxcbXURzrNpPN5BqB47CvyL1YqCg7Hanx69SxqP6zJKcdN_0FeA7dR86wkCN0g"/>
+<div class="flex flex-col overflow-hidden">
+<span class="truncate text-sm font-semibold text-white">Sarah Chen</span>
+<span class="truncate text-xs text-white/50">Pro Plan</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex flex-1 flex-col overflow-y-auto overflow-x-hidden bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="sticky top-0 z-10 flex h-16 w-full items-center justify-between border-b border-gray-200 dark:border-white/5 bg-surface-light dark:bg-surface-dark px-6 shadow-sm">
+<div class="flex items-center gap-4">
+<h2 class="text-xl font-bold text-gray-900 dark:text-white">Dashboard</h2>
+</div>
+<div class="flex items-center gap-6">
+<!-- Search -->
+<div class="relative hidden w-80 md:block">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-gray-400" style="font-size: 20px;">search</span>
+</div>
+<input class="block w-full rounded-lg border-none bg-gray-100 dark:bg-white/5 py-2 pl-10 pr-3 text-sm text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Search sellers, products, or brands..." type="text"/>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-3">
+<button class="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">notifications</span>
+<span class="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-surface-dark"></span>
+</button>
+<button class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">help</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-6 lg:p-10 space-y-8 max-w-[1600px] mx-auto w-full">
+<!-- Welcome Section -->
+<div>
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white">Good morning, Sarah</h3>
+<p class="text-gray-500 dark:text-gray-400 mt-1">Here is your daily trust intelligence summary.</p>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+<!-- High Trust -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark p-6 shadow-sm ring-1 ring-gray-200 dark:ring-white/5 transition-all hover:shadow-md">
+<div class="flex items-center justify-between mb-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<span class="flex items-center text-xs font-medium text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-500/10 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined mr-1" style="font-size: 14px;">trending_up</span>
+                                +12%
+                            </span>
+</div>
+<h4 class="text-sm font-medium text-gray-500 dark:text-gray-400">High Trust Sellers</h4>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-3xl font-bold text-gray-900 dark:text-white">1,245</span>
+<span class="text-xs text-gray-400">monitored</span>
+</div>
+</div>
+<!-- Medium Risk -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark p-6 shadow-sm ring-1 ring-gray-200 dark:ring-white/5 transition-all hover:shadow-md">
+<div class="flex items-center justify-between mb-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<span class="flex items-center text-xs font-medium text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-500/10 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined mr-1" style="font-size: 14px;">trending_up</span>
+                                +2%
+                            </span>
+</div>
+<h4 class="text-sm font-medium text-gray-500 dark:text-gray-400">Medium Risk Sellers</h4>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-3xl font-bold text-gray-900 dark:text-white">43</span>
+<span class="text-xs text-gray-400">review needed</span>
+</div>
+</div>
+<!-- High Risk Alerts -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark p-6 shadow-sm ring-1 ring-gray-200 dark:ring-white/5 transition-all hover:shadow-md">
+<div class="flex items-center justify-between mb-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400">
+<span class="material-symbols-outlined">gpp_bad</span>
+</div>
+<span class="flex items-center text-xs font-medium text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-500/10 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined mr-1" style="font-size: 14px;">trending_down</span>
+                                -5%
+                            </span>
+</div>
+<h4 class="text-sm font-medium text-gray-500 dark:text-gray-400">High Risk Alerts</h4>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-3xl font-bold text-gray-900 dark:text-white">5</span>
+<span class="text-xs text-gray-400">action required</span>
+</div>
+</div>
+</div>
+<!-- Trending Trusted Sellers Section -->
+<div>
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Trending Trusted Sellers</h3>
+<a class="text-sm font-medium text-primary hover:text-primary/80 flex items-center gap-1" href="#">
+                            View All <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+<!-- Seller Card 1 -->
+<div class="flex flex-col rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-white/5 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-32 w-full bg-cover bg-center relative" data-alt="Red Nike sneaker on a yellow background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAgrCkA8HZZUR1M_dTSnK0ULK9tFgAl3Ua4ZW1HuXuBy-00gzRspgJS2qSvhLJqqn9hTbgKxAsn01ZAP1CtkgYtm6yh_dEIrZ2chjIS8RLNJx2rM807aplBqf4MNyGCYvqdyJhFShwLpDlDri93Ntb1ZHZ8Yk-rgmcEPQQ6v_NpYsqgBF4HgGx2CxO4a5t2dDvoFx8QbtOs4tJ8C6lV7Y1vdia1QU5DzK0cFcc1BwnvYtBp5FqG_bkFFAGpBGqYoVKQpDzUpnCFCIo');">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-4">
+<span class="inline-flex items-center rounded bg-green-500 px-2 py-0.5 text-xs font-bold text-white shadow-sm">
+<span class="material-symbols-outlined mr-1" style="font-size: 12px;">verified</span>
+                                        VERIFIED
+                                     </span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-gray-900 dark:text-white">TechHaven</h4>
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">bookmark_border</span>
+</button>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Electronics &amp; Gadgets</p>
+<div class="mt-4 pt-4 border-t border-gray-100 dark:border-white/5">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-medium text-gray-500">Trust Score</span>
+<span class="text-sm font-bold text-green-600 dark:text-green-400">98/100</span>
+</div>
+<div class="h-2 w-full rounded-full bg-gray-100 dark:bg-white/10 overflow-hidden">
+<div class="h-full rounded-full bg-green-500" style="width: 98%"></div>
+</div>
+<div class="mt-3 flex justify-between text-xs text-gray-400">
+<span>Reviews: 4.9k</span>
+<span>Disputes: &lt; 1%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Seller Card 2 -->
+<div class="flex flex-col rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-white/5 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-32 w-full bg-cover bg-center relative" data-alt="Minimalist white wristwatch on a pink background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCK93EBU1l58ZZQLrnbVDZSzG44UFXl1Gpe9AKuiBzH-FIIPYX8JhNCd_FRqCKZ8v4fYCLnPiHL6e3TsyI76zzRyYGWLdb4nzye5DIF24DDChFjkreHJASEggnm57l6_-Qp-HzidjGAEwcuvUJPjK6rOubTeEWSrcdOk6JoXz8118Q_eC-d7oILvqKcJH4lm4kV2M5Db7pNOX0aZHL3lHJ-jM_Kb8rfySh8I_mtlXW9J0MCkLPKdJGxVl6y24gjeSLQUrv-62mHpfs');">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-4">
+<span class="inline-flex items-center rounded bg-blue-500 px-2 py-0.5 text-xs font-bold text-white shadow-sm">
+<span class="material-symbols-outlined mr-1" style="font-size: 12px;">new_releases</span>
+                                        RISING STAR
+                                     </span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-gray-900 dark:text-white">LuxeTime</h4>
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">bookmark_border</span>
+</button>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Accessories &amp; Watches</p>
+<div class="mt-4 pt-4 border-t border-gray-100 dark:border-white/5">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-medium text-gray-500">Trust Score</span>
+<span class="text-sm font-bold text-blue-600 dark:text-blue-400">89/100</span>
+</div>
+<div class="h-2 w-full rounded-full bg-gray-100 dark:bg-white/10 overflow-hidden">
+<div class="h-full rounded-full bg-blue-500" style="width: 89%"></div>
+</div>
+<div class="mt-3 flex justify-between text-xs text-gray-400">
+<span>Reviews: 850</span>
+<span>Disputes: 2%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Seller Card 3 -->
+<div class="flex flex-col rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-white/5 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-32 w-full bg-cover bg-center relative" data-alt="Modern blue headphones on a white background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADeBYic5M51fkdGBPDuvwGMhF2xoA7SOxJ7GedA7GiKmjYAk5ZJLaB91xs2oF5U5pMClN7PZAG_EK-k4LUyHzek1QWqKgxite1Sdr0uGnXFawlDGjMTS0HG79hhX0n3vvVLHaA86HavyEbTu8V4a7CVYgeDxE5rxwSix4pusHH6j3r2VoVVosq7yR3jOjhxux9umL_2gbWedz6YDD-InYfRMd95Zr0ljtWcndIh9cj3jqmvC0qRsAZOj6e2cVf8xxIsPi83BZ8wio');">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-4">
+<span class="inline-flex items-center rounded bg-green-500 px-2 py-0.5 text-xs font-bold text-white shadow-sm">
+<span class="material-symbols-outlined mr-1" style="font-size: 12px;">verified</span>
+                                        VERIFIED
+                                     </span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-gray-900 dark:text-white">AudioPro</h4>
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">bookmark_border</span>
+</button>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Audio Equipment</p>
+<div class="mt-4 pt-4 border-t border-gray-100 dark:border-white/5">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-medium text-gray-500">Trust Score</span>
+<span class="text-sm font-bold text-green-600 dark:text-green-400">95/100</span>
+</div>
+<div class="h-2 w-full rounded-full bg-gray-100 dark:bg-white/10 overflow-hidden">
+<div class="h-full rounded-full bg-green-500" style="width: 95%"></div>
+</div>
+<div class="mt-3 flex justify-between text-xs text-gray-400">
+<span>Reviews: 12.1k</span>
+<span>Disputes: &lt; 0.5%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Seller Card 4 -->
+<div class="flex flex-col rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-white/5 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-32 w-full bg-cover bg-center relative" data-alt="Polaroid camera on a colorful abstract background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC26TObO42HP5Fy3L26PQ4uuGDk0jpzc2i_rXVRZzKj5FNdLFx-VXRVLGALrLaiztNMOWm72JlqS3ygxdwkctCGTWdWLEjkjT8fjTTzH8eKvKsNusPyRKrhelNldNPMgHkP7rAnY64cyfiwhwN3WyVy4afmBPNIaJhCXh3gXM0z5jEoi4_GdIr6AaeCYy_ymjY9esdRpZzoVR8WYr_KW40zM9-MIWydiHsfr91b-CF6s_9WCRsVMHAwh4J1mYlfBi5SaAm4-GnyZsg');">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-4">
+<span class="inline-flex items-center rounded bg-amber-500 px-2 py-0.5 text-xs font-bold text-white shadow-sm">
+<span class="material-symbols-outlined mr-1" style="font-size: 12px;">warning</span>
+                                        WATCHLIST
+                                     </span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-gray-900 dark:text-white">RetroCam</h4>
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">bookmark_border</span>
+</button>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Photography &amp; Vintage</p>
+<div class="mt-4 pt-4 border-t border-gray-100 dark:border-white/5">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-medium text-gray-500">Trust Score</span>
+<span class="text-sm font-bold text-amber-600 dark:text-amber-400">72/100</span>
+</div>
+<div class="h-2 w-full rounded-full bg-gray-100 dark:bg-white/10 overflow-hidden">
+<div class="h-full rounded-full bg-amber-500" style="width: 72%"></div>
+</div>
+<div class="mt-3 flex justify-between text-xs text-gray-400">
+<span>Reviews: 240</span>
+<span>Disputes: 5%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-white/5 shadow-sm">
+<div class="px-6 py-4 border-b border-gray-200 dark:border-white/5 flex items-center justify-between">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Recent Alerts</h3>
+<button class="text-gray-400 hover:text-primary">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm text-gray-500 dark:text-gray-400">
+<thead class="bg-gray-50 dark:bg-white/5 text-xs uppercase text-gray-700 dark:text-gray-300">
+<tr>
+<th class="px-6 py-3" scope="col">Seller Name</th>
+<th class="px-6 py-3" scope="col">Platform</th>
+<th class="px-6 py-3" scope="col">Alert Type</th>
+<th class="px-6 py-3" scope="col">Status</th>
+<th class="px-6 py-3" scope="col">Date</th>
+<th class="px-6 py-3 text-right" scope="col">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 dark:divide-white/5">
+<tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Gadget Galaxy</td>
+<td class="px-6 py-4">Amazon</td>
+<td class="px-6 py-4 text-amber-600 dark:text-amber-400">Review Spike</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/30 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-300">
+                                            Investigating
+                                        </span>
+</td>
+<td class="px-6 py-4">Oct 24, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="font-medium text-primary hover:underline">Details</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">FashionForward</td>
+<td class="px-6 py-4">Shopify</td>
+<td class="px-6 py-4 text-red-600 dark:text-red-400">Counterfeit Report</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/30 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:text-red-300">
+                                            Critical
+                                        </span>
+</td>
+<td class="px-6 py-4">Oct 23, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="font-medium text-primary hover:underline">Details</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Home Essentials</td>
+<td class="px-6 py-4">Ebay</td>
+<td class="px-6 py-4 text-green-600 dark:text-green-400">Score Improved</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-300">
+                                            Resolved
+                                        </span>
+</td>
+<td class="px-6 py-4">Oct 22, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="font-medium text-primary hover:underline">Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-gray-200 dark:border-white/5 flex items-center justify-between">
+<span class="text-sm text-gray-500">Showing 3 of 12 alerts</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 rounded border border-gray-300 dark:border-white/10 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5">Previous</button>
+<button class="px-3 py-1 rounded border border-gray-300 dark:border-white/10 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

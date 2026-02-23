@@ -14,8 +14,10 @@ from app.models.schemas import (
     ReviewResponse,
     SellerComparisonRequest,
     SellerComparisonResponse,
-    SellerComparisonItem
+    SellerComparisonItem,
+    TrustScoreBreakdown
 )
+from app.services.trust_engine import trust_engine
 
 router = APIRouter()
 supabase = get_supabase()
@@ -277,3 +279,61 @@ def compare_sellers(request: SellerComparisonRequest):
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error comparing sellers: {str(e)}")
+
+@router.post("/sellers/{seller_id}/analyze", response_model=dict)
+def analyze_seller_trust(seller_id: str):
+    """
+    On-Demand triggers the AMD ONNX Runtime AI Pipeline to recalculate a seller's trust score.
+    """
+    try:
+        results = trust_engine.analyze_seller(seller_id)
+        return results
+    except ValueError as ve:
+        raise HTTPException(status_code=404, detail=str(ve))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"AI engine execution failed: {str(e)}")
+
+
+@router.post("/sellers/analyze-all")
+def analyze_all_sellers():
+    """
+    Batch-triggers AMD ONNX AI analysis for ALL sellers in the database.
+    """
+    try:
+        # Fetch all seller IDs
+        all_sellers = supabase.table("sellers").select("id, name").execute()
+        
+        if not all_sellers.data:
+            return {"message": "No sellers found", "processed": 0, "failed": 0}
+        
+        processed = 0
+        failed = 0
+        results = []
+        
+        for seller in all_sellers.data:
+            try:
+                result = trust_engine.analyze_seller(seller["id"])
+                processed += 1
+                results.append({
+                    "seller_id": seller["id"],
+                    "name": seller["name"],
+                    "score": result["trust_score"]["overall_score"],
+                    "status": "success"
+                })
+            except Exception as e:
+                failed += 1
+                results.append({
+                    "seller_id": seller["id"],
+                    "name": seller["name"],
+                    "error": str(e),
+                    "status": "failed"
+                })
+        
+        return {
+            "message": f"Batch analysis complete. {processed} sellers processed, {failed} failed.",
+            "processed": processed,
+            "failed": failed,
+            "results": results
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Batch analysis failed: {str(e)}")

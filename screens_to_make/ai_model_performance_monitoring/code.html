@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trustora AI Monitoring Panel</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1152d4",
+                        "primary-dark": "#0a3aa0",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b",
+                        "text-main": "#1e293b",
+                        "text-muted": "#64748b",
+                        "success": "#10b981",
+                        "warning": "#f59e0b",
+                        "danger": "#ef4444",
+                    },
+                    fontFamily: {
+                        display: ["Space Grotesk", "sans-serif"],
+                        body: ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                    boxShadow: {
+                        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-text-main antialiased min-h-screen flex flex-col overflow-x-hidden">
+<!-- Main Layout -->
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 bg-surface-light border-b border-slate-200 px-6 py-3 shadow-subtle">
+<div class="max-w-[1400px] mx-auto flex items-center justify-between w-full">
+<!-- Left: Logo & Search -->
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">shield_person</span>
+</div>
+<h2 class="text-slate-900 text-xl font-bold tracking-tight font-display">Trustora</h2>
+</div>
+<div class="hidden md:flex relative group w-64">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 text-[20px]">search</span>
+</div>
+<input class="block w-full rounded-lg border-slate-200 bg-slate-50 py-2 pl-10 pr-3 text-sm placeholder:text-slate-400 focus:border-primary focus:ring-primary sm:text-sm" placeholder="Search metrics or models..." type="text"/>
+</div>
+</div>
+<!-- Right: Nav & Actions -->
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-slate-600 hover:text-primary font-medium text-sm transition-colors" href="#">Dashboard</a>
+<a class="text-primary font-semibold text-sm transition-colors" href="#">Monitoring</a>
+<a class="text-slate-600 hover:text-primary font-medium text-sm transition-colors" href="#">Incidents</a>
+<a class="text-slate-600 hover:text-primary font-medium text-sm transition-colors" href="#">Models</a>
+</nav>
+<div class="h-6 w-px bg-slate-200 hidden lg:block"></div>
+<div class="flex items-center gap-3">
+<button class="relative p-2 text-slate-500 hover:text-primary transition-colors rounded-full hover:bg-slate-100">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 size-2 bg-danger rounded-full border-2 border-white"></span>
+</button>
+<div class="h-9 w-9 rounded-full bg-cover bg-center ring-2 ring-white shadow-sm" data-alt="User profile picture of a smiling man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDz6J2H4i-zaloN4nD49vXQEK6i6tDTjtL9-T9pEZaeuTEZHezg4rGB5gPzTo1Mesg_djuzg5ypVXTI7LeSXa3ZxfJS2vXgzpH5CaEOKSgJPllD75aLwoUROo_Ck_0nN6jMPhtCbkIHw1Ji98VUSXR9d_n5IKPZYETIV6shbKmoqCyiJ0pwce9m09IxeqFFDSFfaqVO58XH3-lN9eBOwi5Dea4oxQxoz4QUpSZqUz-shurBkjRSX6uolQXpoc-DXforDq2f7RlL7Gg");'></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-6 py-8 flex justify-center w-full">
+<div class="max-w-[1400px] w-full flex flex-col gap-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded text-xs font-semibold bg-green-100 text-green-700 uppercase tracking-wider">Live System</span>
+<span class="text-slate-400 text-sm">• Last updated: Just now</span>
+</div>
+<h1 class="text-slate-900 text-3xl md:text-4xl font-bold tracking-tight font-display">AI Model Performance</h1>
+<p class="text-slate-500 text-lg">Real-time telemetry of Trustora's fraud detection engine.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-200 bg-white text-slate-700 font-medium hover:bg-slate-50 transition-colors shadow-sm text-sm">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span>Last 24 Hours</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white font-medium hover:bg-primary-dark transition-colors shadow-sm shadow-primary/20 text-sm">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Export Report</span>
+</button>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Accuracy Card -->
+<div class="bg-surface-light rounded-xl border border-slate-200 p-6 shadow-card hover:shadow-lg transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">radar</span>
+</div>
+<div class="flex flex-col h-full justify-between gap-4">
+<div>
+<p class="text-slate-500 text-sm font-medium mb-1">Model Accuracy</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-3xl font-bold text-slate-900 font-display">99.4%</h3>
+<span class="flex items-center text-xs font-semibold text-success bg-success/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-0.5">trending_up</span>
+                                        +0.2%
+                                    </span>
+</div>
+</div>
+<!-- Mini Chart Representation -->
+<div class="h-12 w-full flex items-end gap-1 opacity-60">
+<div class="w-full bg-primary/10 rounded-t-sm h-[40%]"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[60%]"></div>
+<div class="w-full bg-primary/30 rounded-t-sm h-[50%]"></div>
+<div class="w-full bg-primary/40 rounded-t-sm h-[70%]"></div>
+<div class="w-full bg-primary/60 rounded-t-sm h-[85%]"></div>
+<div class="w-full bg-primary rounded-t-sm h-[95%]"></div>
+</div>
+</div>
+</div>
+<!-- Precision Card -->
+<div class="bg-surface-light rounded-xl border border-slate-200 p-6 shadow-card hover:shadow-lg transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-blue-500">flaky</span>
+</div>
+<div class="flex flex-col h-full justify-between gap-4">
+<div>
+<p class="text-slate-500 text-sm font-medium mb-1">Detection Precision</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-3xl font-bold text-slate-900 font-display">98.2%</h3>
+<span class="flex items-center text-xs font-semibold text-success bg-success/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-0.5">trending_up</span>
+                                        +0.5%
+                                    </span>
+</div>
+</div>
+<!-- Mini Gauge Representation (CSS only) -->
+<div class="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden mt-8">
+<div class="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-400 to-primary w-[98%]"></div>
+</div>
+<p class="text-xs text-slate-400 mt-1 text-right">Target: &gt;98.0%</p>
+</div>
+</div>
+<!-- Latency Card -->
+<div class="bg-surface-light rounded-xl border border-slate-200 p-6 shadow-card hover:shadow-lg transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-indigo-500">speed</span>
+</div>
+<div class="flex flex-col h-full justify-between gap-4">
+<div>
+<p class="text-slate-500 text-sm font-medium mb-1">Inference Latency</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-3xl font-bold text-slate-900 font-display">12ms</h3>
+<span class="flex items-center text-xs font-semibold text-success bg-success/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-0.5">arrow_downward</span>
+                                        -2ms
+                                    </span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-4">
+<div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-success w-[20%] rounded-full"></div>
+</div>
+<span class="text-xs font-medium text-slate-500">Fast</span>
+</div>
+<p class="text-xs text-slate-400">P99 Latency at peak load</p>
+</div>
+</div>
+</div>
+<!-- Hardware Optimization Badge Section -->
+<div class="w-full bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 text-white relative overflow-hidden shadow-xl">
+<!-- Background Pattern -->
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#1152d4 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-primary/20 to-transparent pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex-1">
+<div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-3 py-1 mb-4 backdrop-blur-sm">
+<span class="material-symbols-outlined text-sm text-green-400">memory</span>
+<span class="text-xs font-bold tracking-wide uppercase">Hardware Accelerated</span>
+</div>
+<h2 class="text-3xl md:text-4xl font-bold font-display mb-3">ROCm Optimized Infrastructure</h2>
+<p class="text-slate-300 text-lg max-w-xl">
+                                Trustora's models are running on the AMD ROCm™ open software platform, delivering up to 3x faster inference speeds for real-time fraud detection.
+                            </p>
+</div>
+<div class="flex items-center gap-6 bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-md">
+<div class="text-center">
+<div class="text-3xl font-bold font-display text-green-400">32GB</div>
+<div class="text-xs text-slate-400 uppercase tracking-wider mt-1">VRAM Usage</div>
+</div>
+<div class="w-px h-12 bg-white/10"></div>
+<div class="text-center">
+<div class="text-3xl font-bold font-display text-green-400">94%</div>
+<div class="text-xs text-slate-400 uppercase tracking-wider mt-1">GPU Util</div>
+</div>
+<div class="w-px h-12 bg-white/10"></div>
+<div class="flex flex-col items-center">
+<button class="text-sm font-semibold text-white bg-primary hover:bg-primary-dark px-4 py-2 rounded-lg transition-colors shadow-lg shadow-primary/30">
+                                    View Specs
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Confidence Chart -->
+<div class="bg-surface-light rounded-xl border border-slate-200 p-6 shadow-subtle flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-bold text-slate-900 font-display">Model Confidence Over Time</h3>
+<p class="text-sm text-slate-500">Average prediction confidence score</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary"></span>
+<span class="text-sm text-slate-600 font-medium">Stable</span>
+</div>
+</div>
+<div class="flex-1 min-h-[250px] w-full relative">
+<!-- Custom CSS Chart with SVG -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 500 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#1152d4" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#1152d4" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="500" y1="40" y2="40"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="500" y1="80" y2="80"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="500" y1="120" y2="120"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="500" y1="160" y2="160"></line>
+<!-- The Line -->
+<path d="M0,120 C50,110 50,60 100,60 C150,60 150,90 200,80 C250,70 250,40 300,50 C350,60 350,100 400,90 C450,80 450,30 500,40" fill="none" stroke="#1152d4" stroke-linecap="round" stroke-width="3"></path>
+<!-- The Fill Area -->
+<path d="M0,120 C50,110 50,60 100,60 C150,60 150,90 200,80 C250,70 250,40 300,50 C350,60 350,100 400,90 C450,80 450,30 500,40 V200 H0 Z" fill="url(#chartGradient)" opacity="0.5"></path>
+<!-- Tooltip Point -->
+<circle cx="300" cy="50" fill="white" r="4" stroke="#1152d4" stroke-width="3"></circle>
+</svg>
+<!-- Tooltip Overlay (Mock) -->
+<div class="absolute top-[15%] left-[58%] bg-slate-900 text-white text-xs px-2 py-1 rounded pointer-events-none transform -translate-x-1/2 -translate-y-full mb-2 shadow-lg">
+                                98.4% Confidence
+                            </div>
+</div>
+<div class="flex justify-between mt-4 text-xs font-medium text-slate-400">
+<span>00:00</span>
+<span>04:00</span>
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+<span>20:00</span>
+</div>
+</div>
+<!-- Volume Chart -->
+<div class="bg-surface-light rounded-xl border border-slate-200 p-6 shadow-subtle flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-bold text-slate-900 font-display">Daily Inference Volume</h3>
+<p class="text-sm text-slate-500">Total requests processed</p>
+</div>
+<div class="text-right">
+<p class="text-2xl font-bold text-slate-900 font-display">1.2M</p>
+<p class="text-xs text-success font-medium">+5.0% vs yesterday</p>
+</div>
+</div>
+<div class="flex-1 flex items-end justify-between gap-2 h-[250px] pt-8">
+<!-- Bars -->
+<div class="w-full bg-slate-100 rounded-t-sm h-[40%] hover:bg-primary/60 transition-colors relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">400k</div>
+</div>
+<div class="w-full bg-slate-100 rounded-t-sm h-[65%] hover:bg-primary/60 transition-colors relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">650k</div>
+</div>
+<div class="w-full bg-slate-100 rounded-t-sm h-[55%] hover:bg-primary/60 transition-colors relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">550k</div>
+</div>
+<div class="w-full bg-slate-100 rounded-t-sm h-[80%] hover:bg-primary/60 transition-colors relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">800k</div>
+</div>
+<div class="w-full bg-slate-100 rounded-t-sm h-[60%] hover:bg-primary/60 transition-colors relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">600k</div>
+</div>
+<div class="w-full bg-primary/40 rounded-t-sm h-[75%] hover:bg-primary/60 transition-colors relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">750k</div>
+</div>
+<div class="w-full bg-primary rounded-t-sm h-[95%] shadow-lg shadow-primary/20 relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">950k</div>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-xs font-medium text-slate-400">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+<!-- Recent Incidents Table -->
+<div class="bg-surface-light rounded-xl border border-slate-200 shadow-subtle overflow-hidden">
+<div class="p-6 border-b border-slate-100 flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-900 font-display">Recent Anomaly Detections</h3>
+<a class="text-sm font-semibold text-primary hover:text-primary-dark" href="#">View All</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm text-slate-600">
+<thead class="bg-slate-50 text-slate-900 font-semibold border-b border-slate-200">
+<tr>
+<th class="px-6 py-4">Transaction ID</th>
+<th class="px-6 py-4">Timestamp</th>
+<th class="px-6 py-4">Confidence</th>
+<th class="px-6 py-4">Model Version</th>
+<th class="px-6 py-4 text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 font-mono text-xs">#TRX-8829-XJ</td>
+<td class="px-6 py-4">Oct 24, 14:32:01</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 bg-slate-200 rounded-full h-1.5 overflow-hidden">
+<div class="bg-danger h-full w-[92%]"></div>
+</div>
+<span class="text-danger font-bold">99.1%</span>
+</div>
+</td>
+<td class="px-6 py-4">v2.4.1 (ROCm)</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700">
+<span class="material-symbols-outlined text-[14px]">block</span>
+                                            Blocked
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 font-mono text-xs">#TRX-9921-PL</td>
+<td class="px-6 py-4">Oct 24, 14:30:45</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 bg-slate-200 rounded-full h-1.5 overflow-hidden">
+<div class="bg-warning h-full w-[74%]"></div>
+</div>
+<span class="text-warning font-bold">74.5%</span>
+</div>
+</td>
+<td class="px-6 py-4">v2.4.1 (ROCm)</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
+<span class="material-symbols-outlined text-[14px]">flag</span>
+                                            Flagged
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 font-mono text-xs">#TRX-1102-MK</td>
+<td class="px-6 py-4">Oct 24, 14:28:12</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 bg-slate-200 rounded-full h-1.5 overflow-hidden">
+<div class="bg-danger h-full w-[96%]"></div>
+</div>
+<span class="text-danger font-bold">96.8%</span>
+</div>
+</td>
+<td class="px-6 py-4">v2.4.0 (Legacy)</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700">
+<span class="material-symbols-outlined text-[14px]">block</span>
+                                            Blocked
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

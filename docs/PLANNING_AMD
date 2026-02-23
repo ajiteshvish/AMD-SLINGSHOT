@@ -1,0 +1,37 @@
+1. Ryzen AI Software & ONNX Runtime (The Core AI Engine)
+   Purpose: This is the heart of your "local, privacy-first AI execution" feature. We will use the Ryzen AI SDK and ONNX Runtime to execute your AI models (for sentiment analysis and trust scoring) directly on the Neural Processing Unit (NPU) or CPU of Ryzen-powered devices. This ensures maximum speed and lower power consumption while keeping user data private.
+
+Where it will be used: We will integrate this into your FastAPI Python Backend (backend/app/ai/). When the frontend requests a trust score or sentiment analysis, the backend will pass the data through the ONNX model using the VitisAIExecutionProvider or CPUExecutionProvider (optimized by ZenDNN).
+
+What I need from you:
+
+The Models: I need your trained AI models (e.g., a .onnx file for the sentiment analyzer and another for the trust score generator).
+Model Inputs/Outputs: Documentation on what input shape/format your model expects (e.g., text tokens, array of numbers) and what it outputs.
+Ryzen AI Docs: If you have specific Ryzen AI SDK installation instructions or scripts you want me to follow, please provide them. 2. INT8 Quantization & Vitis AI (Model Optimization)
+Purpose: Raw AI models are often too large and slow for real-time local execution. We will use Vitis AI tools to apply INT8 Quantization, which compresses the model size and makes it run dramatically faster on the AMD NPU without a noticeable loss in accuracy.
+
+Where it will be used: This is a Pre-deployment Step. We will create a Python quantization script (e.g., backend/scripts/quantize_model.py) that takes your original model and outputs a highly optimized \_int8.onnx version.
+
+What I need from you:
+
+Calibration Dataset: A small sample dataset (even just 100 dummy reviews/seller stats) that the Vitis AI quantizer can use to calibrate the INT8 weights.
+Vitis AI Docker/Environment: If you have a preferred Vitis AI docker container command from the AMD hackathon resources, share it so I can write the exact build script. 3. ZenDNN (AMD CPU Optimization)
+Purpose: If the user's device doesn't have an NPU, or if we are running inference on a standard AMD CPU server, ZenDNN will optimize the ONNX/TensorFlow/PyTorch execution specifically for the AMD "Zen" architecture, boosting performance significantly over standard CPU inference.
+
+Where it will be used: In the Backend (backend/app/ai/engine.py). We will write the inference logic with fallback mechanisms (e.g., Try NPU first -> Fallback to ZenDNN CPU -> Fallback to standard CPU).
+
+What I need from you:
+
+Just confirmation on whether you want me to configure the fallback logic. (No extra files needed from you for this). 4. ROCm (Radeon Open Compute) - Optional/Server-Side
+Purpose: If you plan to run heavy models on the server side (e.g., if you choose to deploy your API to an AMD-powered cloud instance instead of purely local execution), ROCm provides GPU acceleration.
+
+Where it will be used: In a Docker container or backend deployment script.
+
+What I need from you:
+
+Let me know if we are focusing only on edge-AI (Ryzen AI) or if you also want a server-side GPU (ROCm) deployment pipeline written.
+Next Steps: What You Should Send Me Now
+Your AMD Documentation: Please paste or upload any specific hackathon documentation, SDK links, or starter code provided by AMD.
+Your Models: If you have a model ready (even a dummy model), let me know where it is located or how to generate it.
+Clarification on Testing: I noticed this workspace is running on a Mac. Ryzen AI and ROCm generally require AMD silicon (Windows/Linux). Will you be transferring this code to an AMD machine to test for the hackathon judging, or do we need to mock the AMD pipeline so the app doesn't crash on standard machines?
+Once you provide the docs and models, I will start writing the quantization scripts and the FastAPI ONNX inference endpoints immediately!

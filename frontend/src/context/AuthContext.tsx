@@ -17,11 +17,6 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Demo credentials
-const DEMO_USERS = {
-  'demo@trustora.com': { password: 'demo123', role: 'user' as const },
-  'admin@trustora.com': { password: 'admin123', role: 'admin' as const },
-};
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<DemoUser | null>(null);
@@ -41,22 +36,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setLoading(false);
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, _password: string) => {
     // Simulate async operation
     await new Promise(resolve => setTimeout(resolve, 500));
     
-    const demoUser = DEMO_USERS[email as keyof typeof DEMO_USERS];
-    
-    if (!demoUser || demoUser.password !== password) {
-      throw new Error('Invalid email or password');
-    }
+    // Demo mode: accept any credentials
+    // Auto-detect role from email
+    const detectedRole: 'user' | 'admin' = email.toLowerCase().includes('admin') ? 'admin' : 'user';
     
     const user = { id: email, email };
     setUser(user);
-    setRole(demoUser.role);
+    setRole(detectedRole);
     
     localStorage.setItem('demo_user', JSON.stringify(user));
-    localStorage.setItem('demo_role', demoUser.role);
+    localStorage.setItem('demo_role', detectedRole);
   };
 
   const signup = async (email: string) => {

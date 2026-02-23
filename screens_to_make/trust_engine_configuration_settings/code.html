@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trustora - Trust Engine Configuration</title>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1173d4",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1a2632",
+              "border-light": "#e2e8f0",
+              "border-dark": "#2d3b4a",
+              "text-main": "#0f172a",
+              "text-main-dark": "#f8fafc",
+              "text-sec": "#64748b",
+              "text-sec-dark": "#94a3b8"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-text-main-dark transition-colors duration-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-text-main dark:text-text-main-dark">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<h2 class="text-text-main dark:text-text-main-dark text-lg font-bold leading-tight tracking-[-0.015em]">Trustora</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="hidden md:flex items-center gap-9">
+<a class="text-text-sec dark:text-text-sec-dark hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-primary text-sm font-medium leading-normal" href="#">Trust Engine</a>
+<a class="text-text-sec dark:text-text-sec-dark hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">User Management</a>
+<a class="text-text-sec dark:text-text-sec-dark hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Settings</a>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg size-10 bg-background-light dark:bg-background-dark hover:bg-slate-200 dark:hover:bg-slate-700 text-text-main dark:text-text-main-dark transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-10 bg-background-light dark:bg-background-dark hover:bg-slate-200 dark:hover:bg-slate-700 text-text-main dark:text-text-main-dark transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-white dark:ring-slate-700" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9eXDqMZFBrrIcdFnAOkP_idMCJN-3MVm-gSOb1j0UN1fjVmUAME2Sw5LnpEnu1UB76oAv05oDyeLoz3BsLSr8NlNEYEUUVXStBoIzjbjKR57Q_ylbsdwGA4plHOnTfySL6VihDhmpHZgcwAqE00ClEft026SX7AkGoTk0wF4opKfGRPQx_lHaJkwOT0ZFp9ha9CUcvr4jBBtkwjyaCdQ-Z1ji6t95xTikPb8jF8L5TtoxtK6vkdY-Ebb7dkTioXmRrk0YutnyueA");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 justify-center py-8 px-4 sm:px-6 lg:px-8">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1 gap-8">
+<!-- Page Title & Hero -->
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between flex-wrap gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-text-main dark:text-text-main-dark text-3xl sm:text-4xl font-black leading-tight tracking-tight">Trust Engine Configuration</h1>
+<p class="text-text-sec dark:text-text-sec-dark text-base sm:text-lg">Configure the AI model parameters, weighting factors, and risk thresholds.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-background-light dark:bg-slate-800 text-text-main dark:text-text-main-dark text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-border-light dark:border-border-dark">
+                            Reset Defaults
+                        </button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold shadow-md hover:bg-blue-600 transition-colors">
+                            Save Changes
+                        </button>
+</div>
+</div>
+</div>
+<!-- Section 1: Weights -->
+<section class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden">
+<div class="px-6 py-5 border-b border-border-light dark:border-border-dark flex justify-between items-center">
+<div>
+<h2 class="text-text-main dark:text-text-main-dark text-xl font-bold">Adjust Trust Score Weights</h2>
+<p class="text-text-sec dark:text-text-sec-dark text-sm mt-1">Define the relative importance of each factor in the overall trust calculation.</p>
+</div>
+<div class="bg-blue-50 dark:bg-blue-900/20 text-primary px-3 py-1 rounded-full text-xs font-bold border border-blue-100 dark:border-blue-800 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">info</span> Total must equal 100%
+                    </div>
+</div>
+<div class="p-6 grid gap-8">
+<!-- Slider Item: Reviews -->
+<div class="@container">
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<label class="flex items-center gap-2 text-text-main dark:text-text-main-dark font-semibold">
+<span class="material-symbols-outlined text-text-sec dark:text-text-sec-dark">star</span>
+                                    Reviews &amp; Ratings
+                                </label>
+<span class="text-primary font-bold text-lg">40%</span>
+</div>
+<div class="relative flex items-center h-6 w-full">
+<input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none focus:ring-2 focus:ring-primary/50" max="100" min="0" type="range" value="40"/>
+</div>
+<p class="text-xs text-text-sec dark:text-text-sec-dark">Impact of customer feedback volume and average star rating.</p>
+</div>
+</div>
+<!-- Slider Item: Delivery -->
+<div class="@container">
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<label class="flex items-center gap-2 text-text-main dark:text-text-main-dark font-semibold">
+<span class="material-symbols-outlined text-text-sec dark:text-text-sec-dark">local_shipping</span>
+                                    Delivery Performance
+                                </label>
+<span class="text-primary font-bold text-lg">35%</span>
+</div>
+<div class="relative flex items-center h-6 w-full">
+<input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none focus:ring-2 focus:ring-primary/50" max="100" min="0" type="range" value="35"/>
+</div>
+<p class="text-xs text-text-sec dark:text-text-sec-dark">Based on on-time delivery rates and shipping tracking validity.</p>
+</div>
+</div>
+<!-- Slider Item: Refunds -->
+<div class="@container">
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<label class="flex items-center gap-2 text-text-main dark:text-text-main-dark font-semibold">
+<span class="material-symbols-outlined text-text-sec dark:text-text-sec-dark">currency_exchange</span>
+                                    Refund &amp; Dispute Rate
+                                </label>
+<span class="text-primary font-bold text-lg">15%</span>
+</div>
+<div class="relative flex items-center h-6 w-full">
+<input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none focus:ring-2 focus:ring-primary/50" max="100" min="0" type="range" value="15"/>
+</div>
+<p class="text-xs text-text-sec dark:text-text-sec-dark">Frequency of return requests and escalated disputes.</p>
+</div>
+</div>
+<!-- Slider Item: Identity -->
+<div class="@container">
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<label class="flex items-center gap-2 text-text-main dark:text-text-main-dark font-semibold">
+<span class="material-symbols-outlined text-text-sec dark:text-text-sec-dark">badge</span>
+                                    Identity Verification
+                                </label>
+<span class="text-primary font-bold text-lg">10%</span>
+</div>
+<div class="relative flex items-center h-6 w-full">
+<input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none focus:ring-2 focus:ring-primary/50" max="100" min="0" type="range" value="10"/>
+</div>
+<p class="text-xs text-text-sec dark:text-text-sec-dark">Weighting for KYC/KYB completion status.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Thresholds -->
+<section class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden">
+<div class="px-6 py-5 border-b border-border-light dark:border-border-dark">
+<h2 class="text-text-main dark:text-text-main-dark text-xl font-bold">Configure Risk Thresholds</h2>
+<p class="text-text-sec dark:text-text-sec-dark text-sm mt-1">Set the score boundaries that trigger risk level badges.</p>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Low Risk Card -->
+<div class="border border-green-200 dark:border-green-900 bg-green-50/50 dark:bg-green-900/10 rounded-lg p-5 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-green-700 dark:text-green-400 font-bold uppercase tracking-wider text-xs">
+<span class="material-symbols-outlined text-lg">shield</span>
+                            Low Risk
+                        </div>
+<div class="flex items-center gap-2">
+<div class="relative w-full">
+<label class="block text-xs font-medium text-text-sec dark:text-text-sec-dark mb-1">Score Above</label>
+<input class="block w-full rounded-md border-border-light dark:border-border-dark bg-white dark:bg-slate-800 py-2 px-3 text-text-main dark:text-text-main-dark shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm" type="number" value="85"/>
+</div>
+</div>
+<p class="text-xs text-text-sec dark:text-text-sec-dark">Accounts scoring above this threshold are trusted automatically.</p>
+</div>
+<!-- Medium Risk Card -->
+<div class="border border-yellow-200 dark:border-yellow-900 bg-yellow-50/50 dark:bg-yellow-900/10 rounded-lg p-5 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-yellow-700 dark:text-yellow-400 font-bold uppercase tracking-wider text-xs">
+<span class="material-symbols-outlined text-lg">warning</span>
+                            Medium Risk
+                        </div>
+<div class="flex items-center gap-2">
+<div class="relative w-full">
+<label class="block text-xs font-medium text-text-sec dark:text-text-sec-dark mb-1">Range Start</label>
+<input class="block w-full rounded-md border-border-light dark:border-border-dark bg-white dark:bg-slate-800 py-2 px-3 text-text-main dark:text-text-main-dark shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm" type="number" value="50"/>
+</div>
+<span class="text-text-sec pt-5">-</span>
+<div class="relative w-full">
+<label class="block text-xs font-medium text-text-sec dark:text-text-sec-dark mb-1">Range End</label>
+<input class="block w-full rounded-md border-border-light dark:border-border-dark bg-white dark:bg-slate-800 py-2 px-3 text-text-main dark:text-text-main-dark shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm" type="number" value="84"/>
+</div>
+</div>
+<p class="text-xs text-text-sec dark:text-text-sec-dark">Requires manual review or additional verification steps.</p>
+</div>
+<!-- High Risk Card -->
+<div class="border border-red-200 dark:border-red-900 bg-red-50/50 dark:bg-red-900/10 rounded-lg p-5 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-red-700 dark:text-red-400 font-bold uppercase tracking-wider text-xs">
+<span class="material-symbols-outlined text-lg">gpp_bad</span>
+                            High Risk
+                        </div>
+<div class="flex items-center gap-2">
+<div class="relative w-full">
+<label class="block text-xs font-medium text-text-sec dark:text-text-sec-dark mb-1">Score Below</label>
+<input class="block w-full rounded-md border-border-light dark:border-border-dark bg-white dark:bg-slate-800 py-2 px-3 text-text-main dark:text-text-main-dark shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm" type="number" value="50"/>
+</div>
+</div>
+<p class="text-xs text-text-sec dark:text-text-sec-dark">Accounts are automatically flagged and restricted.</p>
+</div>
+</div>
+</section>
+<!-- Section 3: Advanced Options -->
+<section class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden mb-10">
+<div class="px-6 py-5 border-b border-border-light dark:border-border-dark">
+<h2 class="text-text-main dark:text-text-main-dark text-xl font-bold">Advanced Settings</h2>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between py-2">
+<div>
+<p class="font-medium text-text-main dark:text-text-main-dark">Decay Factor</p>
+<p class="text-sm text-text-sec dark:text-text-sec-dark">Reduce the impact of older data points (e.g., reviews older than 1 year).</p>
+</div>
+<button aria-checked="true" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 bg-primary" role="switch">
+<span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<hr class="border-border-light dark:border-border-dark"/>
+<div class="flex items-center justify-between py-2">
+<div>
+<p class="font-medium text-text-main dark:text-text-main-dark">Strict Mode</p>
+<p class="text-sm text-text-sec dark:text-text-sec-dark">If any single factor is 0, the total Trust Score becomes 0 regardless of other weights.</p>
+</div>
+<button aria-checked="false" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 bg-slate-200 dark:bg-slate-700" role="switch">
+<span aria-hidden="true" class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</body></html>

@@ -38,8 +38,17 @@ const Register = () => {
 
   return (
     <div className="auth-container">
-      <div className="auth-card">
-        <h1>Create Account</h1>
+      <div className="auth-card relative overflow-hidden">
+        {/* Decorative Top Gradient Line */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+        
+        <div className="flex justify-center mb-6">
+          <div className="text-3xl font-bold tracking-tight text-white flex items-center gap-2">
+            <span className="text-primary">🛡️</span> TRUSTORA
+          </div>
+        </div>
+
+        <h1 className="text-2xl font-bold text-center text-white mb-2">Create Account</h1>
         <p className="auth-subtitle">Join Trustora to start analyzing sellers</p>
 
         {error && <div className="error-message">{error}</div>}

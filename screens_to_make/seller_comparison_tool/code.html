@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trustora - Seller Comparison</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#1a2233",
+                        "card-light": "#ffffff",
+                        "text-primary-dark": "#f8fafc",
+                        "text-secondary-dark": "#94a3b8",
+                        "success": "#10b981",
+                        "warning": "#f59e0b",
+                        "danger": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-[#282e39] bg-white dark:bg-[#111318] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Trustora</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-white text-sm font-medium transition-colors" href="#">Marketplace</a>
+<a class="text-slate-900 dark:text-white text-sm font-medium" href="#">Sellers</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-white text-sm font-medium transition-colors" href="#">Fraud Prevention</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-white text-sm font-medium transition-colors" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<label class="flex flex-col min-w-40 !h-10 max-w-64 hidden sm:flex">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full ring-1 ring-slate-200 dark:ring-[#282e39] focus-within:ring-primary dark:focus-within:ring-primary transition-shadow">
+<div class="text-slate-400 dark:text-[#9da6b9] flex border-none bg-transparent items-center justify-center pl-4">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent placeholder:text-slate-400 dark:placeholder:text-[#9da6b9] px-4 pl-2 text-sm font-normal" placeholder="Search sellers..." value=""/>
+</div>
+</label>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-primary/90 text-white text-sm font-bold transition-colors shadow-lg shadow-primary/20">
+<span class="truncate">Log In</span>
+</button>
+</div>
+</header>
+<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-[1280px]">
+<!-- Page Header -->
+<div class="mb-10 text-center sm:text-left">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl sm:text-4xl font-black leading-tight tracking-tight text-slate-900 dark:text-white mb-2">Seller Comparison</h1>
+<p class="text-slate-500 dark:text-[#9da6b9] text-base sm:text-lg max-w-2xl">
+                        Analyze trust scores, verify credentials, and compare historical performance metrics side-by-side to make data-driven decisions.
+                    </p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-200 dark:bg-card-dark text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-[#282e39] transition-colors font-medium text-sm">
+<span class="material-symbols-outlined text-[20px]">share</span>
+                        Share Report
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-200 dark:bg-card-dark text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-[#282e39] transition-colors font-medium text-sm">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                        Export PDF
+                    </button>
+</div>
+</div>
+</div>
+<!-- Comparison Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+<!-- Seller 1 Card -->
+<div class="flex flex-col bg-white dark:bg-card-dark rounded-xl overflow-hidden border border-slate-200 dark:border-[#282e39] shadow-sm">
+<!-- Header -->
+<div class="p-6 border-b border-slate-100 dark:border-[#282e39] relative">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 hover:text-danger cursor-pointer">close</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-16 h-16 rounded-full bg-slate-100 dark:bg-[#111318] flex items-center justify-center overflow-hidden border border-slate-200 dark:border-[#282e39]">
+<div class="w-full h-full bg-cover bg-center" data-alt="Company Logo TechNova" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB8Hov0KfoTaqWxK_fmHYivlsWFbFKxiz0YSQwQkb83vDieBDibPyaKOzAwCXVLdoeu6UsiVwAdTtTjYRJyjSKvkwe2tFoEJ2mjeuAXdau797QYiqGz6OCEEObSWEU6iJrHa1VKxw34MfJx05LD8IxG-uedynC5xFAKUFAjISP72G7JOXBd3TpIOwbBX5wDFt3EO52OO2Xjsxi8STpsUkI8s49NVjf5d6otFSmd_bqNBuJ__Y7rD3UbW3oEK1LM0EBMzctNvi4Wpy8')"></div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">TechNova Solutions</h3>
+<div class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-[16px] text-blue-500">verified</span>
+                                Verified Seller
+                            </div>
+</div>
+</div>
+<!-- Trust Score Badge -->
+<div class="mt-6 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Trust Score</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-slate-900 dark:text-white">94</span>
+<span class="text-sm text-slate-400 dark:text-slate-600">/ 100</span>
+</div>
+</div>
+<div class="h-12 w-24 relative">
+<!-- Mini Trend Chart Placeholder -->
+<svg class="w-full h-full overflow-visible" viewbox="0 0 100 50">
+<path d="M0 40 Q 25 35, 50 20 T 100 5" fill="none" stroke="#10b981" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="100" cy="5" fill="#10b981" r="3"></circle>
+</svg>
+</div>
+</div>
+<div class="mt-2 flex items-center gap-1 text-xs font-bold text-success">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+4.2% this month</span>
+</div>
+</div>
+<!-- Metrics Body -->
+<div class="p-6 flex-1 flex flex-col gap-6">
+<!-- Metric 1 -->
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span class="text-slate-600 dark:text-slate-400">Shipment Speed</span>
+<span class="font-bold text-slate-900 dark:text-white">4.8/5.0</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-[#111318] rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 96%"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span class="text-slate-600 dark:text-slate-400">Dispute Rate</span>
+<span class="font-bold text-slate-900 dark:text-white">0.2%</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-[#111318] rounded-full overflow-hidden">
+<div class="h-full bg-success rounded-full" style="width: 98%"></div>
+</div>
+<p class="text-[10px] text-slate-400 mt-1">Lower is better (Inv)</p>
+</div>
+<!-- Metric 3 -->
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span class="text-slate-600 dark:text-slate-400">Customer Feedback</span>
+<span class="font-bold text-slate-900 dark:text-white">98% Positive</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-[#111318] rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<div class="border-t border-slate-100 dark:border-[#282e39] my-1"></div>
+<!-- Details List -->
+<div class="grid gap-3 text-sm">
+<div class="flex justify-between">
+<span class="text-slate-500 dark:text-slate-400">Founded</span>
+<span class="text-slate-900 dark:text-white font-medium">2018</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-500 dark:text-slate-400">Location</span>
+<span class="text-slate-900 dark:text-white font-medium">San Francisco, CA</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-500 dark:text-slate-400">Response Time</span>
+<span class="text-slate-900 dark:text-white font-medium">&lt; 2 hrs</span>
+</div>
+</div>
+</div>
+<div class="p-6 pt-0 mt-auto">
+<button class="w-full py-2.5 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-colors font-semibold text-sm">
+                        View Full Profile
+                    </button>
+</div>
+</div>
+<!-- Seller 2 Card -->
+<div class="flex flex-col bg-white dark:bg-card-dark rounded-xl overflow-hidden border border-slate-200 dark:border-[#282e39] shadow-sm">
+<!-- Header -->
+<div class="p-6 border-b border-slate-100 dark:border-[#282e39] relative">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 hover:text-danger cursor-pointer">close</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-16 h-16 rounded-full bg-slate-100 dark:bg-[#111318] flex items-center justify-center overflow-hidden border border-slate-200 dark:border-[#282e39]">
+<div class="w-full h-full bg-cover bg-center" data-alt="Company Logo Global Trade Inc" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCytqGHjbE5TrruN-dSPuWxRjjVd2vvFBWJrC261k7LZrVyty3dRympHhitW9RC7fEt5BX9Kfp3Hlh_4vEmogcJx9-Ct-cgEvr_BB6qYgZNYhhIoM3ItCRCAKqOPgGtgsUJ3BS5dgXK4Jm8Er-tZuK1yWXId0wm-jmliVQSWxqt4Oal89C7F8QYkSJYRYWQbOw8oPCzeet6c77EsN-rH28MpHCa3RJRpOLcETBiUO82yQXnUCjLnHAN1F-A1hw1eB8Esy76AlCViCY')"></div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Global Trade Inc</h3>
+<div class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-[16px] text-slate-400">verified_user</span>
+                                Registered Entity
+                            </div>
+</div>
+</div>
+<!-- Trust Score Badge -->
+<div class="mt-6 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Trust Score</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-slate-900 dark:text-white">76</span>
+<span class="text-sm text-slate-400 dark:text-slate-600">/ 100</span>
+</div>
+</div>
+<div class="h-12 w-24 relative">
+<!-- Mini Trend Chart Placeholder -->
+<svg class="w-full h-full overflow-visible" viewbox="0 0 100 50">
+<path d="M0 30 Q 25 35, 50 30 T 100 35" fill="none" stroke="#f59e0b" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="100" cy="35" fill="#f59e0b" r="3"></circle>
+</svg>
+</div>
+</div>
+<div class="mt-2 flex items-center gap-1 text-xs font-bold text-warning">
+<span class="material-symbols-outlined text-[14px]">remove</span>
+<span>0.0% this month</span>
+</div>
+</div>
+<!-- Metrics Body -->
+<div class="p-6 flex-1 flex flex-col gap-6">
+<!-- Metric 1 -->
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span class="text-slate-600 dark:text-slate-400">Shipment Speed</span>
+<span class="font-bold text-slate-900 dark:text-white">3.9/5.0</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-[#111318] rounded-full overflow-hidden">
+<div class="h-full bg-warning rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span class="text-slate-600 dark:text-slate-400">Dispute Rate</span>
+<span class="font-bold text-slate-900 dark:text-white">1.8%</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-[#111318] rounded-full overflow-hidden">
+<div class="h-full bg-warning rounded-full" style="width: 82%"></div>
+</div>
+<p class="text-[10px] text-slate-400 mt-1">Lower is better (Inv)</p>
+</div>
+<!-- Metric 3 -->
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span class="text-slate-600 dark:text-slate-400">Customer Feedback</span>
+<span class="font-bold text-slate-900 dark:text-white">88% Positive</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-[#111318] rounded-full overflow-hidden">
+<div class="h-full bg-warning rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div class="border-t border-slate-100 dark:border-[#282e39] my-1"></div>
+<!-- Details List -->
+<div class="grid gap-3 text-sm">
+<div class="flex justify-between">
+<span class="text-slate-500 dark:text-slate-400">Founded</span>
+<span class="text-slate-900 dark:text-white font-medium">2020</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-500 dark:text-slate-400">Location</span>
+<span class="text-slate-900 dark:text-white font-medium">London, UK</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-500 dark:text-slate-400">Response Time</span>
+<span class="text-slate-900 dark:text-white font-medium">~ 12 hrs</span>
+</div>
+</div>
+</div>
+<div class="p-6 pt-0 mt-auto">
+<button class="w-full py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-[#282e39] transition-colors font-semibold text-sm">
+                        View Full Profile
+                    </button>
+</div>
+</div>
+<!-- Seller 3 Card (Empty State / Add New) -->
+<div class="flex flex-col bg-white/50 dark:bg-card-dark/30 rounded-xl overflow-hidden border border-dashed border-slate-300 dark:border-[#282e39] min-h-[500px] hover:bg-slate-50 dark:hover:bg-card-dark/50 transition-colors cursor-pointer group">
+<div class="flex flex-col items-center justify-center flex-1 p-8 text-center">
+<div class="w-20 h-20 rounded-full bg-slate-100 dark:bg-[#111318] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[40px] text-slate-400 dark:text-slate-600 group-hover:text-primary transition-colors">add</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Add Competitor</h3>
+<p class="text-slate-500 dark:text-[#9da6b9] text-sm max-w-[200px]">
+                        Search for another seller to compare up to 3 profiles side-by-side.
+                    </p>
+<button class="mt-8 px-6 py-2 rounded-lg bg-primary text-white font-medium text-sm shadow-lg shadow-primary/20 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        Search Database
+                    </button>
+</div>
+</div>
+</div>
+<!-- Additional Analysis Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Risk Analysis -->
+<div class="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-[#282e39] p-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">AI Risk Assessment</h3>
+<div class="space-y-6">
+<div class="p-4 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 flex gap-4">
+<div class="shrink-0 mt-1">
+<span class="material-symbols-outlined text-danger">warning</span>
+</div>
+<div>
+<h4 class="font-semibold text-slate-900 dark:text-white text-sm mb-1">Potential Compliance Issue Detected</h4>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+<strong>Global Trade Inc</strong> has shown a recent spike in shipping delays that correlates with customs hold patterns in the UK region. Monitor closely for next 14 days.
+                            </p>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20 flex gap-4">
+<div class="shrink-0 mt-1">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-semibold text-slate-900 dark:text-white text-sm mb-1">Growth Opportunity</h4>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+<strong>TechNova Solutions</strong> is outperforming category benchmarks in customer retention by 12%. Consider them for "Preferred Seller" program.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Regional Map (Visual) -->
+<div class="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-[#282e39] p-6 flex flex-col">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Operation Zones</h3>
+<div class="flex gap-2 text-xs">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> TechNova</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-warning"></span> Global Trade</span>
+</div>
+</div>
+<div class="flex-1 rounded-lg bg-[#111318] overflow-hidden relative min-h-[200px]">
+<div class="absolute inset-0 opacity-60 bg-cover bg-center" data-alt="World Map Dark Theme" data-location="World Map" style="background-image: url('https://placeholder.pics/svg/300')"></div>
+<!-- Overlays imitating markers -->
+<div class="absolute top-[30%] left-[20%] w-3 h-3 bg-primary rounded-full shadow-[0_0_10px_rgba(17,82,212,0.8)] border border-white animate-pulse"></div>
+<div class="absolute top-[35%] left-[22%] w-2 h-2 bg-primary rounded-full opacity-60"></div>
+<div class="absolute top-[28%] left-[48%] w-3 h-3 bg-warning rounded-full shadow-[0_0_10px_rgba(245,158,11,0.8)] border border-white"></div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

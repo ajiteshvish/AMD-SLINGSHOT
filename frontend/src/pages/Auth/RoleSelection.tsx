@@ -23,8 +23,17 @@ const RoleSelection = () => {
 
   return (
     <div className="auth-container">
-      <div className="auth-card role-card">
-        <h2>Select Your Role</h2>
+      <div className="auth-card role-card relative overflow-hidden">
+        {/* Decorative Top Gradient Line */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+        
+        <div className="flex justify-center mb-6">
+          <div className="text-3xl font-bold tracking-tight text-white flex items-center gap-2">
+            <span className="text-primary">🛡️</span> TRUSTORA
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-center text-white mb-2">Select Your Role</h2>
         <p className="auth-subtitle">Choose how you want to use Trustora</p>
         
         <div className="role-options">

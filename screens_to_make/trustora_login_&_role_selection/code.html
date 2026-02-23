@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trustora Login &amp; Role Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                colors: {
+                "primary": "#1e3b8a",
+                "background-light": "#f6f6f8",
+                "background-dark": "#121620",
+                },
+                fontFamily: {
+                "display": ["Inter", "sans-serif"]
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 lg:px-10">
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">Trustora</h2>
+</div>
+<div class="hidden sm:flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-9 px-4 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium transition-colors">
+                    Contact Sales
+                </button>
+<button class="flex items-center justify-center rounded-lg h-9 px-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 text-sm font-medium transition-colors">
+                    Sign Up
+                </button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+<div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+<!-- Left Column: Illustration/Welcome -->
+<div class="hidden lg:flex flex-col gap-6 p-8 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="w-full aspect-[4/3] rounded-xl overflow-hidden relative bg-slate-100 dark:bg-slate-800" data-alt="Abstract secure digital shield network visualization">
+<img alt="Abstract secure digital shield network visualization" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfJVxMfHJo6RZFDOpMyVFPelGLmFW12o4GQxzwqbjGIHW4nz-1GfkE2UDX4Eyj-peZtfxcdLraaQO-JEgKx5Ug2OSe2LjJsOZdqyr8LAQ-35EC1xq6Wh62jzl6r6-wytfivNonhFrrRhRO0xh2b8B-J7uzIl714n-4t5A24w655mCFFDpoMLWX27wbSkHnqsvyvq3xcP59XWeZclFa6ebv_8OoxyS_k5Fc2ESKy6UFI2oHwpADWMeZ8shpfckI3Rxjrlb5pWBYsM0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent mix-blend-multiply"></div>
+</div>
+<div class="space-y-2">
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">Secure Intelligence for Marketplaces</h3>
+<p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                            Trustora uses advanced AI to detect fraud, verify identities, and build trust within your ecosystem. Log in to access your real-time dashboard.
+                        </p>
+</div>
+<div class="flex items-center gap-4 pt-2">
+<div class="flex -space-x-2">
+<img alt="User profile" class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" data-alt="Portrait of a smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVm-Crt279peD7KmYweTn9I-EvCisCQFqfu8yMj8G0Ec3mXYruJxJnKgwu0QnaVNUtaX-QiQGykoKoNbRgRVzegoLE8kYTlsl6-ycyrGvp5tMVr7v1jf2bpKQ80lB1qZc6L8E-95XKfvKBY2Z8jeTODX7-vsw2FvRclQkdDM9NgRoIsWxm52VMQbcx95P8NyiDTbK6zGEKz_TUJ7o3yuMhCvnKbEl4hKYNUUJYAlL3tLGBsP6MHwPT6OHdOyeAT7l-dvHyqPq4pPA"/>
+<img alt="User profile" class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" data-alt="Portrait of a focused man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO51bJJXU9Cs7nFCOUFhddo7tFWZqCiAj9ZKtLBF0O03RQfVd9hbMAySJZBd4_HrWY5-ZC-le4kqAGxO9qG11FzhUIvGU5Q6vQN8GM0tRa0XtGMUZ87kJc6l-wKS0GbmYis7NuVslH0L12lCOwKMSZLOBgmLhKswl8oXuYpZ0AJH6nD5BrAGWGjFGmFr_leEcjj_QOkdQAiDVUX6UKOlN_3_cKMtIxcPzl0_cXREbin-iwaLQNHGr-YhtiHUEJ9lUUpsvlcyJQxZs"/>
+<img alt="User profile" class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" data-alt="Portrait of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwNoynw5KHMZncK1aGHSefU_Q3sDdSrB3aL6kpIHNngpiZ6l8C6j92XFOWafFsHr3EGyKdcRbBCVlEH98PwjPc8GFrYo7tiCrRTCdufYaYsP_NW6Imhj9711gZz_3NQ1HktQW18nEYdEEUmNsq21slXDB8f38UCxbFj-iZGUfuZhUQeHxT8VrHtTELP1bHMbDs0R5WFMBKwtjeiN4sjWJSrD3sZ8uu645YN426ILsVG2B0aXbmzZqa9cvwC1ULJvMXI8x386Crc5s"/>
+</div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-300">Trusted by 10,000+ Safety Teams</span>
+</div>
+</div>
+<!-- Right Column: Login Form -->
+<div class="w-full max-w-md mx-auto flex flex-col justify-center">
+<div class="bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/50 dark:shadow-black/20 rounded-2xl p-6 sm:p-8 lg:p-10 border border-slate-100 dark:border-slate-800">
+<div class="text-center mb-8">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Welcome Back</h1>
+<p class="text-slate-500 dark:text-slate-400">Please enter your details to sign in.</p>
+</div>
+<!-- Role Selector -->
+<div class="mb-8">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Select Account Type</p>
+<div class="grid grid-cols-2 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="role" type="radio" value="consumer"/>
+<div class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-md text-sm font-medium text-slate-500 dark:text-slate-400 transition-all peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-primary dark:peer-checked:text-white peer-checked:shadow-sm">
+<span class="material-symbols-outlined text-[20px]">person</span>
+                                        Consumer
+                                    </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="role" type="radio" value="admin"/>
+<div class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-md text-sm font-medium text-slate-500 dark:text-slate-400 transition-all peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-primary dark:peer-checked:text-white peer-checked:shadow-sm">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+                                        Admin
+                                    </div>
+</label>
+</div>
+</div>
+<!-- Login Form -->
+<form class="space-y-5">
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300" for="email">Email Address</label>
+<div class="relative">
+<input class="block w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm pl-10 py-3" id="email" placeholder="name@company.com" type="email"/>
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300" for="password">Password</label>
+<div class="relative">
+<input class="block w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm pl-10 pr-10 py-3" id="password" placeholder="••••••••" type="password"/>
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<button class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-2 block text-sm text-slate-600 dark:text-slate-400" for="remember-me">Remember me</label>
+</div>
+<div class="text-sm">
+<a class="font-medium text-primary hover:text-primary/80" href="#">Forgot password?</a>
+</div>
+</div>
+<button class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all active:scale-[0.98]" type="button">
+                                Sign in
+                            </button>
+</form>
+<div class="mt-8">
+<div class="relative">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-200 dark:border-slate-700"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="bg-white dark:bg-slate-900 px-2 text-slate-500">Or continue with</span>
+</div>
+</div>
+<div class="mt-6 grid grid-cols-2 gap-3">
+<button class="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors" type="button">
+<svg aria-hidden="true" class="h-5 w-5" viewbox="0 0 24 24">
+<path d="M12.0003 20.45c4.6667 0 8.45-3.7833 8.45-8.45 0-4.6667-3.7833-8.45-8.45-8.45-4.6667 0-8.45 3.7833-8.45 8.45 0 4.6667 3.7833 8.45 8.45 8.45Z" fill="#fff" fill-opacity="0" stroke="currentColor" stroke-width="0"></path>
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                                    Google
+                                </button>
+<button class="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors" type="button">
+<svg aria-hidden="true" class="h-5 w-5 text-[#1877F2]" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+                                    Facebook
+                                </button>
+</div>
+</div>
+</div>
+<p class="text-center text-sm text-slate-500 mt-6">
+                        Don't have an account? <a class="font-medium text-primary hover:text-primary/80" href="#">Start a 14 day free trial</a>
+</p>
+</div>
+</div>
+</main>
+<footer class="py-6 text-center text-sm text-slate-400 dark:text-slate-600">
+            © 2024 Trustora Inc. All rights reserved.
+        </footer>
+</div>
+</body></html>
