@@ -4,7 +4,7 @@ class Settings(BaseSettings):
     PORT: int = 8000
     HOST: str = "0.0.0.0"
     DEBUG: bool = True
-    CORS_ORIGINS: str = "http://localhost:5173,http://localhost:3000"
+    CORS_ORIGINS: str = "http://localhost:5173,http://localhost:3000,https://*.vercel.app"
     SUPABASE_URL: str
     SUPABASE_SERVICE_KEY: str
     

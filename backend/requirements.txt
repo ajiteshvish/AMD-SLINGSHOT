@@ -3,7 +3,9 @@ uvicorn[standard]
 python-dotenv
 pydantic
 pydantic-settings
-pytest
-hypothesis
 supabase
 postgrest
+onnxruntime
+transformers
+numpy
+sentencepiece
