@@ -68,6 +68,11 @@ class ApiService {
     return response.data;
   }
 
+  async analyzeCustomText(reviews: string[]): Promise<any> {
+    const response = await this.client.post('/analyze-text', { reviews });
+    return response.data;
+  }
+
   async getTrustHistory(sellerId: string, days: number = 30): Promise<TrustScore[]> {
     const response = await this.client.get<TrustScore[]>(`/sellers/${sellerId}/trust-history`, {
       params: { days }

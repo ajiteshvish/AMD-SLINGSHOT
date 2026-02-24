@@ -15,7 +15,7 @@
     --popover: 0 0% 2%;
     --popover-foreground: 0 0% 100%;
     
-    /* Trustora Primary: Deep Blue #1E3A8A */
+    /* ReviewDekho Primary: Deep Blue #1E3A8A */
     --primary: 224 64% 33%;
     --primary-foreground: 0 0% 100%;
     
@@ -43,7 +43,7 @@
     --trust-risk: 0 84% 60%; /* Red #EF4444 */
     
     /* Consumer UI Background: Light Gray #F8FAFC */
-    --trustora-bg: 210 40% 98%;
+    --reviewdekho-bg: 210 40% 98%;
   }
 }
 

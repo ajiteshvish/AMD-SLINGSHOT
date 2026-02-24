@@ -6,7 +6,7 @@ import onnxruntime as ort
 from transformers import AutoTokenizer
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("TrustoraAI_ONNX")
+logger = logging.getLogger("ReviewDekhoAI_ONNX")
 
 # Mock paths - in a real scenario, these would point to generated INT8 quantized .onnx models
 MODELS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models")

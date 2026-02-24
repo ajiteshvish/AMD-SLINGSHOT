@@ -5,6 +5,7 @@ import TopBar from './components/TopBar';
 import { useSellers, useSearchSellers } from '../../hooks/useApi';
 import { api } from '../../services/api';
 import { ShieldCheck, AlertTriangle, ShieldAlert, Activity } from 'lucide-react';
+import { motion } from 'framer-motion';
 import './UserDashboard.css';
 
 const UserDashboard = () => {
@@ -59,7 +60,7 @@ const UserDashboard = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-trustora-bg">
+    <div className="flex min-h-screen bg-reviewdekho-bg">
       <Sidebar />
       
       <main className="flex-1 flex flex-col min-w-0">
@@ -114,8 +115,18 @@ const UserDashboard = () => {
             )}
 
             {/* KEY METRICS CARDS */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-card border border-border rounded-xl p-6 shadow-sm flex items-start justify-between hover:border-primary/50 transition-colors">
+            <motion.div 
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.5, staggerChildren: 0.1 }}
+               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            >
+              <motion.div 
+                 initial={{ opacity: 0, scale: 0.95 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 transition={{ duration: 0.4, delay: 0.1 }}
+                 className="bg-card border border-border rounded-xl p-6 shadow-sm flex items-start justify-between hover:border-primary/50 transition-colors"
+              >
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">High Trust Sellers</p>
                   <h3 className="text-2xl font-bold mt-2 text-foreground">{highTrustSellers.length}</h3>
@@ -126,9 +137,14 @@ const UserDashboard = () => {
                 <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-500">
                   <ShieldCheck size={24} />
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="bg-card border border-border rounded-xl p-6 shadow-sm flex items-start justify-between hover:border-primary/50 transition-colors">
+              <motion.div 
+                 initial={{ opacity: 0, scale: 0.95 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 transition={{ duration: 0.4, delay: 0.2 }}
+                 className="bg-card border border-border rounded-xl p-6 shadow-sm flex items-start justify-between hover:border-primary/50 transition-colors"
+              >
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Medium Risk</p>
                   <h3 className="text-2xl font-bold mt-2 text-foreground">
@@ -141,9 +157,14 @@ const UserDashboard = () => {
                 <div className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500">
                   <AlertTriangle size={24} />
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="bg-card border border-border rounded-xl p-6 shadow-sm flex items-start justify-between hover:border-primary/50 transition-colors">
+              <motion.div 
+                 initial={{ opacity: 0, scale: 0.95 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 transition={{ duration: 0.4, delay: 0.3 }}
+                 className="bg-card border border-border rounded-xl p-6 shadow-sm flex items-start justify-between hover:border-primary/50 transition-colors"
+              >
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">High Risk Alerts</p>
                   <h3 className="text-2xl font-bold mt-2 text-foreground">
@@ -156,9 +177,14 @@ const UserDashboard = () => {
                 <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center text-red-500">
                   <ShieldAlert size={24} />
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="bg-card border border-border rounded-xl p-6 shadow-sm flex items-start justify-between hover:border-primary/50 transition-colors">
+              <motion.div 
+                 initial={{ opacity: 0, scale: 0.95 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 transition={{ duration: 0.4, delay: 0.4 }}
+                 className="bg-card border border-border rounded-xl p-6 shadow-sm flex items-start justify-between hover:border-primary/50 transition-colors"
+              >
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Recently Viewed</p>
                   <h3 className="text-2xl font-bold mt-2 text-foreground">{Object.keys(trustScores).length}</h3>
@@ -169,8 +195,8 @@ const UserDashboard = () => {
                 <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                   <Activity size={24} />
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               
@@ -198,7 +224,10 @@ const UserDashboard = () => {
                       : 'Pending';
 
                     return (
-                    <div 
+                    <motion.div 
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 0.5 + (0.1 * highTrustSellers.indexOf(seller)) }}
                       key={seller.id} 
                       className="bg-card border border-border p-5 rounded-xl hover:border-primary cursor-pointer transition-all hover:shadow-md group"
                       onClick={() => handleSellerClick(seller.id)}
@@ -244,7 +273,7 @@ const UserDashboard = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                     );
                   })}
                 </div>

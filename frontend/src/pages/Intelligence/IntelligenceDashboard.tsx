@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import SentimentAnalysis from './components/SentimentAnalysis';
 import CompetitorIntelligence from './components/CompetitorIntelligence';
 import RiskMonitoring from './components/RiskMonitoring';
+import LivePlayground from './components/LivePlayground';
 import './Intelligence.css';
 
 const IntelligenceDashboard: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'sentiment' | 'competitors' | 'risk'>('sentiment');
+    const [activeTab, setActiveTab] = useState<'sentiment' | 'competitors' | 'risk' | 'playground'>('sentiment');
 
     return (
         <div className="intelligence-dashboard">
@@ -40,12 +41,20 @@ const IntelligenceDashboard: React.FC = () => {
                         Risk Monitoring
                          {activeTab === 'risk' && <div className="tab-indicator bg-red"></div>}
                     </button>
+                    <button
+                        onClick={() => setActiveTab('playground')}
+                        className={`tab-button ${activeTab === 'playground' ? 'text-primary border-b-2 border-primary' : 'inactive'}`}
+                    >
+                        Live AI Playground
+                        {activeTab === 'playground' && <div className="tab-indicator bg-primary"></div>}
+                    </button>
                 </div>
 
                 <div className="animate-fade-in">
                     {activeTab === 'sentiment' && <SentimentAnalysis />}
                     {activeTab === 'competitors' && <CompetitorIntelligence />}
                     {activeTab === 'risk' && <RiskMonitoring />}
+                    {activeTab === 'playground' && <LivePlayground />}
                 </div>
             </div>
         </div>

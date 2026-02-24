@@ -1,5 +1,5 @@
 """
-Seed data generator for Trustora database
+Seed data generator for ReviewDekho database
 Generates realistic sellers, metrics, reviews, and trust scores
 """
 
@@ -238,12 +238,12 @@ def create_admin_profiles():
     admins = [
         {
             "id": "admin-test-001",
-            "email": "admin@trustora.com",
+            "email": "admin@reviewdekho.com",
             "role": "admin"
         },
         {
             "id": "admin-test-002",
-            "email": "moderator@trustora.com",
+            "email": "moderator@reviewdekho.com",
             "role": "admin"
         }
     ]

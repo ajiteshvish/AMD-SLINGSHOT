@@ -67,7 +67,7 @@ export const SellerMonitoring = () => {
   });
 
   return (
-    <div className="flex min-h-screen bg-trustora-bg">
+    <div className="flex min-h-screen bg-reviewdekho-bg">
       <AdminSidebar />
       <main className="flex-1 flex flex-col min-w-0">
         <AdminTopBar />
@@ -229,7 +229,7 @@ export const RiskAlerts = () => {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-trustora-bg">
+    <div className="flex min-h-screen bg-reviewdekho-bg">
       <AdminSidebar />
       <main className="flex-1 flex flex-col min-w-0">
         <AdminTopBar />
@@ -339,7 +339,7 @@ export const AIMonitoring = () => {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-trustora-bg">
+    <div className="flex min-h-screen bg-reviewdekho-bg">
       <AdminSidebar />
       <main className="flex-1 flex flex-col min-w-0">
         <AdminTopBar />
@@ -494,7 +494,7 @@ export const ModelSettings = () => {
   const total = Object.values(weights).reduce((a, b) => a + b, 0);
 
   return (
-    <div className="flex min-h-screen bg-trustora-bg">
+    <div className="flex min-h-screen bg-reviewdekho-bg">
       <AdminSidebar />
       <main className="flex-1 flex flex-col min-w-0">
         <AdminTopBar />
@@ -603,7 +603,7 @@ export const APIConfiguration = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-trustora-bg">
+    <div className="flex min-h-screen bg-reviewdekho-bg">
       <AdminSidebar />
       <main className="flex-1 flex flex-col min-w-0">
         <AdminTopBar />

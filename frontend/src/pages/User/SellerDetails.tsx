@@ -25,7 +25,7 @@ const SellerDetails = () => {
 
   if (loading || !data) {
     return (
-      <div className="flex min-h-screen bg-trustora-bg">
+      <div className="flex min-h-screen bg-reviewdekho-bg">
         <Sidebar />
         <main className="flex-1 flex flex-col min-w-0">
           <TopBar />
@@ -50,7 +50,7 @@ const SellerDetails = () => {
     : 'High risk flags triggered by AI behavior analysis.';
 
   return (
-    <div className="flex min-h-screen bg-trustora-bg">
+    <div className="flex min-h-screen bg-reviewdekho-bg">
       <Sidebar />
       
       <main className="flex-1 flex flex-col min-w-0">

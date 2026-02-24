@@ -9,7 +9,7 @@ const testimonials = [
     avatar: "https://i.pravatar.cc/150?u=a042581f4e29026024d"
   },
   {
-    quote: "Trustora has completely changed how we evaluate marketplace sellers. The reduction in fraudulent transactions and improved customer satisfaction has been remarkable.",
+    quote: "ReviewDekho has completely changed how we evaluate marketplace sellers. The reduction in fraudulent transactions and improved customer satisfaction has been remarkable.",
     author: "Sarah Jenkins",
     role: "Head of Trust & Safety",
     company: "GlobalTrade",

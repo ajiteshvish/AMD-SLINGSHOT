@@ -8,7 +8,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from ai.inference.run_inference import engine as ai_engine
 
-logger = logging.getLogger("Trustora_TrustEngine")
+logger = logging.getLogger("ReviewDekho_TrustEngine")
 
 class TrustEngine:
     def __init__(self):

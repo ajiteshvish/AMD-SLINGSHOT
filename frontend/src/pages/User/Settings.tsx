@@ -7,7 +7,7 @@ const Settings = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex min-h-screen bg-trustora-bg">
+    <div className="flex min-h-screen bg-reviewdekho-bg">
       <Sidebar />
       <main className="flex-1 flex flex-col min-w-0">
         <TopBar />
@@ -23,7 +23,7 @@ const Settings = () => {
                <h1 className="text-3xl font-bold tracking-tight text-foreground flex items-center gap-3">
                  <SettingsIcon className="text-primary"/> Account Settings
                </h1>
-               <p className="text-muted-foreground mt-1">Manage your Trustora preferences and security.</p>
+               <p className="text-muted-foreground mt-1">Manage your ReviewDekho preferences and security.</p>
             </div>
 
             <div className="space-y-6">

@@ -17,8 +17,11 @@ import Alerts from './pages/User/Alerts';
 import Settings from './pages/User/Settings';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import { SellerMonitoring, RiskAlerts, AIMonitoring, ModelSettings, APIConfiguration } from './pages/Admin/AdminPlaceholders';
-import IntelligenceDashboard from './pages/Intelligence/IntelligenceDashboard'; // Import Intelligence Dashboard
+import IntelligenceDashboard from './pages/Intelligence/IntelligenceDashboard';
 import Demo from './pages/Demo';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import OurTeam from './pages/OurTeam';
 
 // Styles
 import './App.css';
@@ -36,6 +39,9 @@ function App() {
           <Route path="/demo" element={<Demo />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/team" element={<OurTeam />} />
 
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>

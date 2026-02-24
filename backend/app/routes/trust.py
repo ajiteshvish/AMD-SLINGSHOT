@@ -280,6 +280,11 @@ def compare_sellers(request: SellerComparisonRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error comparing sellers: {str(e)}")
 
+from pydantic import BaseModel
+
+class AnalyzeTextRequest(BaseModel):
+    reviews: List[str]
+
 @router.post("/sellers/{seller_id}/analyze", response_model=dict)
 def analyze_seller_trust(seller_id: str):
     """
@@ -292,6 +297,24 @@ def analyze_seller_trust(seller_id: str):
         raise HTTPException(status_code=404, detail=str(ve))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"AI engine execution failed: {str(e)}")
+
+@router.post("/analyze-text")
+def analyze_custom_text(request: AnalyzeTextRequest):
+    """
+    Live AI Playground Endpoint for AMD Hackathon Demo.
+    Accepts arbitrary text and returns ONNX inference speeds and sentiment/authenticity.
+    """
+    try:
+        # Import the singleton instance directly from the AI module
+        import sys
+        import os
+        sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+        from ai.inference.run_inference import engine as ai_engine
+        
+        output = ai_engine.analyze_review_batch(request.reviews)
+        return output
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Text analysis failed: {str(e)}")
 
 
 @router.post("/sellers/analyze-all")

@@ -19,7 +19,7 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen bg-trustora-bg">
+      <div className="flex min-h-screen bg-reviewdekho-bg">
         <AdminSidebar />
         <main className="flex-1 flex flex-col min-w-0">
           <AdminTopBar />
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
 
   if (error || !dashboardData) {
     return (
-      <div className="flex min-h-screen bg-trustora-bg">
+      <div className="flex min-h-screen bg-reviewdekho-bg">
         <AdminSidebar />
         <main className="flex-1 flex flex-col min-w-0">
           <AdminTopBar />
@@ -56,7 +56,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="flex min-h-screen bg-trustora-bg">
+    <div className="flex min-h-screen bg-reviewdekho-bg">
       <AdminSidebar />
       <main className="flex-1 flex flex-col min-w-0">
         <AdminTopBar />

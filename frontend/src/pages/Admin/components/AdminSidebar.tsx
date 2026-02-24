@@ -27,7 +27,7 @@ const AdminSidebar = () => {
     <aside className="w-64 bg-card border-r border-border h-screen sticky top-0 flex flex-col pt-6 pb-4">
       <div className="px-6 mb-8 flex items-center gap-2">
         <span className="text-primary text-2xl">🛡️</span>
-        <h1 className="text-xl font-bold tracking-tight text-white">TRUSTORA <span className="text-accent text-sm">ADMIN</span></h1>
+        <h1 className="text-xl font-bold tracking-tight text-white">REVIEWDEKHO <span className="text-accent text-sm">ADMIN</span></h1>
       </div>
 
       <nav className="flex-1 px-4 space-y-2">

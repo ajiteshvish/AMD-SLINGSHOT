@@ -1,3 +1,3 @@
 """
-Test package for Trustora database schema.
+Test package for ReviewDekho database schema.
 """

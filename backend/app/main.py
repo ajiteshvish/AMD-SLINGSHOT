@@ -11,7 +11,7 @@ from app.config import settings
 from app.routes import health, trust, admin
 
 app = FastAPI(
-    title="Trustora API",
+    title="ReviewDekho API",
     description="Trust Intelligence Platform for Online Marketplaces",
     version="1.0.0"
 )
@@ -32,7 +32,7 @@ app.include_router(admin.router, prefix="/api/admin", tags=["admin"])
 @app.get("/")
 def root():
     return {
-        "message": "Trustora API is running", 
+        "message": "ReviewDekho API is running", 
         "version": "1.0.0",
         "docs": "/docs"
     }

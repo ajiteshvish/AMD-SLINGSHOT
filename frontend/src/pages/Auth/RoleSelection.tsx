@@ -29,12 +29,12 @@ const RoleSelection = () => {
         
         <div className="flex justify-center mb-6">
           <div className="text-3xl font-bold tracking-tight text-white flex items-center gap-2">
-            <span className="text-primary">🛡️</span> TRUSTORA
+            <span className="text-primary">🛡️</span> REVIEWDEKHO
           </div>
         </div>
 
         <h2 className="text-2xl font-bold text-center text-white mb-2">Select Your Role</h2>
-        <p className="auth-subtitle">Choose how you want to use Trustora</p>
+        <p className="auth-subtitle">Choose how you want to use ReviewDekho</p>
         
         <div className="role-options">
           <button 

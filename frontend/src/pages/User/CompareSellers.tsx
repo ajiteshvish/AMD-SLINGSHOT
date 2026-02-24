@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
 import { useSellers } from '../../hooks/useApi';
 import { ArrowLeft, ShieldCheck, ShieldAlert, BarChart3, Activity } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const CompareSellers = () => {
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ const CompareSellers = () => {
   }, [sellers]);
 
   return (
-    <div className="flex min-h-screen bg-trustora-bg">
+    <div className="flex min-h-screen bg-reviewdekho-bg">
       <Sidebar />
       
       <main className="flex-1 flex flex-col min-w-0">
@@ -90,9 +91,19 @@ const CompareSellers = () => {
                     Calculating comparative metrics across real-time AI endpoints...
                 </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <motion.div 
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.5, staggerChildren: 0.2 }}
+                 className="grid grid-cols-1 md:grid-cols-2 gap-8"
+              >
                 {/* SELLER A */}
-                <div className="bg-card border-none ring-2 ring-primary/20 shadow-lg shadow-primary/5 p-6 rounded-2xl flex flex-col items-center">
+                <motion.div 
+                   initial={{ opacity: 0, scale: 0.95 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   transition={{ duration: 0.4 }}
+                   className="bg-card border-none ring-2 ring-primary/20 shadow-lg shadow-primary/5 p-6 rounded-2xl flex flex-col items-center"
+                >
                     <div className="w-16 h-16 rounded-full bg-background border border-border flex justify-center items-center text-2xl shadow-sm mb-4">
                       {sellerA.name.charAt(0)}
                     </div>
@@ -148,10 +159,15 @@ const CompareSellers = () => {
                            Powered by AMD ONNX
                        </div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* SELLER B */}
-                <div className="bg-card border border-border shadow-sm p-6 rounded-2xl flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity">
+                <motion.div 
+                   initial={{ opacity: 0, scale: 0.95 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   transition={{ duration: 0.4 }}
+                   className="bg-card border border-border shadow-sm p-6 rounded-2xl flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity"
+                >
                     <div className="w-16 h-16 rounded-full bg-background border border-border flex justify-center items-center text-2xl shadow-sm mb-4">
                       {sellerB.name.charAt(0)}
                     </div>
@@ -207,8 +223,8 @@ const CompareSellers = () => {
                            Powered by AMD ONNX
                        </div>
                     </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             )}
             
           </div>
