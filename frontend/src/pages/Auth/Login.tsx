@@ -25,7 +25,6 @@ const Login = () => {
       onSubmit={handleSubmit}
       onToggleMode={() => navigate('/register')}
       error={error}
-      demoHint
     />
   );
 };
