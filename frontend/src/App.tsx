@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import CustomCursor from './components/ui/CustomCursor';
 import AnimatedBackground from './components/ui/AnimatedBackground';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // Pages
 import Home from './pages/Home';
@@ -32,6 +33,7 @@ function App() {
     <AuthProvider>
       <CustomCursor />
       <AnimatedBackground />
+      <SpeedInsights />
       <Router>
         <Routes>
           {/* Public Routes */}
