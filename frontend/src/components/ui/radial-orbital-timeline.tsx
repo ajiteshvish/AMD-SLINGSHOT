@@ -168,7 +168,7 @@ export default function RadialOrbitalTimeline({
 
   return (
     <div
-      className="w-full h-[600px] sm:h-[700px] md:h-[800px] lg:h-screen flex flex-col items-center justify-center bg-black overflow-hidden"
+      className="relative z-20 w-full h-[600px] sm:h-[700px] md:h-[800px] lg:h-screen flex flex-col items-center justify-center bg-black overflow-hidden"
       ref={containerRef}
       onClick={handleContainerClick}
     >
@@ -181,7 +181,7 @@ export default function RadialOrbitalTimeline({
             transform: `translate(${centerOffset.x}px, ${centerOffset.y}px)`,
           }}
         >
-          <div className="absolute w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 via-blue-500 to-teal-500 animate-pulse flex items-center justify-center z-10">
+          <div className="absolute w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 via-blue-500 to-teal-500 animate-pulse flex items-center justify-center z-10 pointer-events-none">
             <div className="absolute w-20 h-20 rounded-full border border-white/20 animate-ping opacity-70"></div>
             <div
               className="absolute w-24 h-24 rounded-full border border-white/10 animate-ping opacity-50"
@@ -190,7 +190,7 @@ export default function RadialOrbitalTimeline({
             <div className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-md"></div>
           </div>
 
-          <div className="absolute rounded-full border border-white/10" style={{ width: `${orbitRadius * 2}px`, height: `${orbitRadius * 2}px` }}></div>
+          <div className="absolute rounded-full border border-white/10 pointer-events-none" style={{ width: `${orbitRadius * 2}px`, height: `${orbitRadius * 2}px` }}></div>
 
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
@@ -199,17 +199,17 @@ export default function RadialOrbitalTimeline({
             const isPulsing = pulseEffect[item.id];
             const Icon = item.icon;
 
-            const nodeStyle = {
-              transform: `translate(${position.x}px, ${position.y}px)`,
-              zIndex: isExpanded ? 200 : position.zIndex,
-              opacity: isExpanded ? 1 : position.opacity,
-            };
+              const nodeStyle = {
+                transform: `translate(${position.x}px, ${position.y}px)`,
+                zIndex: isExpanded ? 500 : 300 + position.zIndex,
+                opacity: isExpanded ? 1 : position.opacity,
+              };
 
             return (
               <div
                 key={item.id}
                 ref={(el) => { nodeRefs.current[item.id] = el; }}
-                className="absolute transition-all duration-700 cursor-pointer"
+                className="absolute transition-all duration-700 cursor-pointer w-10 h-10 flex items-center justify-center"
                 style={nodeStyle}
                 onClick={(e) => {
                   e.stopPropagation();

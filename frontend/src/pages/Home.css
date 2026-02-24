@@ -8,6 +8,14 @@
   background: #000000;
 }
 
+.dotted-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
 .cta-content p {
   font-size: 1.125rem;
   color: #A0AEC0;

@@ -83,32 +83,16 @@ const reviewDekhoTimelineData = [
 const Home = () => {
   return (
     <div className="home-page">
-      <div className="dotted-pattern"></div>
-      <Navbar />
+      <div className="dotted-pattern pointer-events-none"></div>
+      <Navbar logoHeight={60} /> {/* Increase this value to make logo bigger */}
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20 pb-12">
         
-        {/* Animated Background Orbs */}
+        {/* Animated Background Orbs - Simplified for performance */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.2, 1],
-              rotate: [0, 90, 0],
-              opacity: [0.3, 0.5, 0.3]
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-[20%] -right-[10%] w-[800px] h-[800px] rounded-full bg-blue-600/20 blur-[120px]"
-          />
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.3, 1],
-              rotate: [0, -90, 0],
-              opacity: [0.2, 0.4, 0.2]
-            }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] rounded-full bg-purple-600/20 blur-[120px]"
-          />
+          <div className="absolute -top-[20%] -right-[10%] w-[800px] h-[800px] rounded-full bg-blue-600/10 blur-[120px] animate-pulse" />
+          <div className="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] rounded-full bg-purple-600/10 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
         </div>
 
         {/* Overlay to ensure text readability */}
@@ -117,8 +101,8 @@ const Home = () => {
         <div className="container relative z-20 mx-auto px-6 lg:px-12 flex flex-col items-center justify-center text-center">
 
 
-          <BlurFade delay={0.2} inView>
-            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white mb-6 leading-tight max-w-5xl">
+          <BlurFade delay={0.25} inView>
+            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white mb-6 leading-tight max-w-5xl">
               Unlock The Power Of <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
                 Trust Intelligence
@@ -126,8 +110,10 @@ const Home = () => {
             </h1>
           </BlurFade>
 
-          <BlurFade delay={0.4} inView>
-            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mb-10 font-light px-4 sm:px-0">
+
+
+          <BlurFade delay={0.25 * 2} inView>
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mb-10 font-light px-4 sm:px-0 tracking-tighter">
               Comprehensive AI solutions for seller verification and risk assessment. Revolutionize how you evaluate trust in online marketplaces without compromising privacy.
             </p>
           </BlurFade>
@@ -203,7 +189,7 @@ const Home = () => {
       {/* Radial Orbital Timeline */}
       <section className="relative bg-black overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-        <div className="text-center pt-24 pb-6 relative z-10">
+        <div className="text-center pt-24 pb-6 relative z-10 pointer-events-none">
           <BlurFade delay={0.2} inView>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-4 mb-4 tracking-tight">
               The Trust Analysis Pipeline
@@ -215,7 +201,9 @@ const Home = () => {
             </p>
           </BlurFade>
         </div>
-        <RadialOrbitalTimeline timelineData={reviewDekhoTimelineData} />
+        <div className="relative z-50">
+          <RadialOrbitalTimeline timelineData={reviewDekhoTimelineData} />
+        </div>
       </section>
 
       {/* Macbook Scroll Section */}
@@ -246,9 +234,16 @@ const Home = () => {
       <footer className="border-t border-white/10 bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-10 md:py-16">
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {/* Brand */}
             <div className="col-span-2 sm:col-span-2 md:col-span-1">
-              <h3 className="text-2xl font-bold text-white mb-3">ReviewDekho</h3>
+              <div className="flex items-center gap-3 mb-4">
+                <img 
+                  src="/logo.png" 
+                  alt="ReviewDekho Logo" 
+                  style={{ height: '64px' }} /* Adjust this value to change footer logo size */
+                  className="w-auto drop-shadow-lg" 
+                />
+                <h3 className="text-3xl font-bold text-white tracking-tight">ReviewDekho</h3>
+              </div>
               <p className="text-gray-400 text-sm leading-relaxed">
                 AI-powered trust intelligence for online marketplaces. Built on AMD hardware for privacy-first, real-time seller verification.
               </p>
@@ -291,7 +286,6 @@ const Home = () => {
             <div className="flex items-center gap-6">
               <Link to="/terms" className="text-gray-500 hover:text-gray-300 transition-colors text-sm">Terms</Link>
               <Link to="/privacy" className="text-gray-500 hover:text-gray-300 transition-colors text-sm">Privacy</Link>
-              <span className="text-gray-500 text-sm">Built with ❤️ on AMD</span>
             </div>
           </div>
         </div>

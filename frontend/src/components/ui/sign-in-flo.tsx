@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Eye, EyeOff, Github, Twitter, Linkedin, Mail, Lock, User } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 import { GlowButton } from "@/components/ui/pulse-beams";
 
 interface FormFieldProps {
@@ -55,13 +55,13 @@ const AnimatedFormField: React.FC<FormFieldProps> = ({
           onChange={onChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="w-full bg-transparent pl-10 pr-12 py-3 text-white placeholder:text-gray-500 focus:outline-none"
+          className="w-full bg-transparent pl-10 pr-12 pt-5 pb-2 text-white placeholder:text-gray-500 focus:outline-none text-base"
           placeholder=""
         />
         
-        <label className={`absolute left-10 transition-all duration-200 ease-in-out pointer-events-none ${
+        <label className={`absolute left-10 transition-all duration-200 ease-in-out pointer-events-none origin-left ${
           isFocused || value 
-            ? 'top-2 text-xs text-blue-400 font-medium' 
+            ? 'top-1.5 text-[10px] text-blue-400 font-bold uppercase tracking-wider' 
             : 'top-1/2 -translate-y-1/2 text-sm text-gray-500'
         }`}>
           {placeholder}
@@ -90,25 +90,7 @@ const AnimatedFormField: React.FC<FormFieldProps> = ({
   );
 };
 
-const SocialButton: React.FC<{ icon: React.ReactNode; name: string }> = ({ icon, name }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <button
-      className="relative group p-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 ease-in-out overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      aria-label={name}
-    >
-      <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 transition-transform duration-500 ${
-        isHovered ? 'translate-x-0' : '-translate-x-full'
-      }`} />
-      <div className="relative text-white group-hover:text-blue-400 transition-colors">
-        {icon}
-      </div>
-    </button>
-  );
-};
+// SocialButton component removed as requested to keep only email/password sign-in.
 
 const FloatingParticles: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -203,7 +185,6 @@ export interface SignInFloProps {
   onSubmit: (data: { email: string; password: string; name?: string }) => Promise<void>;
   onToggleMode?: () => void;
   error?: string;
-  demoHint?: boolean;
 }
 
 export const SignInFlo: React.FC<SignInFloProps> = ({
@@ -211,11 +192,9 @@ export const SignInFlo: React.FC<SignInFloProps> = ({
   onSubmit,
   onToggleMode,
   error,
-  demoHint = false,
 }) => {
   const [email, setEmail] = useState(mode === 'signin' ? 'demo@reviewdekho.com' : '');
   const [password, setPassword] = useState(mode === 'signin' ? 'demo123' : '');
-  const [name, setName] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -225,7 +204,7 @@ export const SignInFlo: React.FC<SignInFloProps> = ({
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await onSubmit({ email, password, name: isSignUp ? name : undefined });
+      await onSubmit({ email, password });
     } catch {
       // error is handled by parent
     } finally {
@@ -251,12 +230,7 @@ export const SignInFlo: React.FC<SignInFloProps> = ({
             </p>
           </div>
 
-          {demoHint && !isSignUp && (
-            <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3 mb-6 text-center">
-              <p className="text-xs text-blue-400 font-medium">🎯 Demo Mode — Use any email & password</p>
-              <p className="text-[11px] text-gray-400 mt-1">Use <strong>admin@</strong> in email for Admin access</p>
-            </div>
-          )}
+          {/* Demo hint removed for cleaner UI */}
 
           {error && (
             <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-3 mb-6 text-center">
@@ -265,15 +239,7 @@ export const SignInFlo: React.FC<SignInFloProps> = ({
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {isSignUp && (
-              <AnimatedFormField
-                type="text"
-                placeholder="Full Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                icon={<User size={18} />}
-              />
-            )}
+            {/* Name field removed as requested - Only email and password */}
 
             <AnimatedFormField
               type="email"
@@ -332,22 +298,7 @@ export const SignInFlo: React.FC<SignInFloProps> = ({
             </GlowButton>
           </form>
 
-          <div className="mt-8">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-white/10" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-zinc-900 text-gray-400">Or continue with</span>
-              </div>
-            </div>
-
-            <div className="mt-6 grid grid-cols-3 gap-3">
-              <SocialButton icon={<Github size={20} />} name="GitHub" />
-              <SocialButton icon={<Twitter size={20} />} name="Twitter" />
-              <SocialButton icon={<Linkedin size={20} />} name="LinkedIn" />
-            </div>
-          </div>
+          {/* Social Logins removed as requested */}
 
           {onToggleMode && (
             <div className="mt-8 text-center">

@@ -33,7 +33,7 @@ const teamMembers = [
 const OurTeam = () => {
   return (
     <div className="min-h-screen bg-black">
-      <Navbar />
+      <Navbar logoHeight={60} />
 
       {/* Hero */}
       <section className="relative pt-32 pb-16 overflow-hidden">
@@ -115,7 +115,7 @@ const OurTeam = () => {
       {/* Footer */}
       <footer className="border-t border-white/10 bg-black py-8">
         <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-500 text-sm">© 2026 ReviewDekho. All rights reserved. Built with ❤️ on AMD</p>
+          <p className="text-gray-500 text-sm">© 2026 ReviewDekho. All rights reserved</p>
         </div>
       </footer>
     </div>
