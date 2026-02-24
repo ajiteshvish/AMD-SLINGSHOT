@@ -10,8 +10,8 @@ logger = logging.getLogger("TrustoraAI_ONNX")
 
 # Mock paths - in a real scenario, these would point to generated INT8 quantized .onnx models
 MODELS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models")
-SENTIMENT_MODEL_PATH = os.path.join(MODELS_DIR, "sentiment_quantized.onnx")
-FAKE_REVIEW_MODEL_PATH = os.path.join(MODELS_DIR, "fake_review_detector.onnx")
+SENTIMENT_MODEL_PATH = os.path.join(MODELS_DIR, "sentiment_model.onnx")
+FAKE_REVIEW_MODEL_PATH = os.path.join(MODELS_DIR, "trust_score_model.onnx")
 
 class TrustInferenceEngine:
     def __init__(self):
@@ -36,38 +36,36 @@ class TrustInferenceEngine:
         self.is_initialized = False
 
     def initialize(self):
-        """Load tokenizer and ONNX sessions. Uses dummy models if files missing for hackathon safety."""
+        """Load tokenizer and ONNX sessions."""
         logger.info("Initializing AMD ONNX Runtime inference sessions...")
         
         try:
             # We use a standard small tokenizer that matches typical sentiment models
             self.tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
             
-            # For hackathon robustness: If the physical .onnx files aren't mapped yet, 
-            # we will operate in "simulation mode" but track the architecture correctly.
-            if os.path.exists(SENTIMENT_MODEL_PATH) and os.path.exists(FAKE_REVIEW_MODEL_PATH):
-                session_options = ort.SessionOptions()
-                session_options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
-                
-                logger.info(f"Loading Quantized Sentiment Model from {SENTIMENT_MODEL_PATH}")
-                self.sentiment_session = ort.InferenceSession(
-                    SENTIMENT_MODEL_PATH, 
-                    sess_options=session_options, 
-                    providers=self.providers
-                )
-                
-                logger.info(f"Loading Fake Review Model from {FAKE_REVIEW_MODEL_PATH}")
-                self.fake_review_session = ort.InferenceSession(
-                    FAKE_REVIEW_MODEL_PATH,
-                    sess_options=session_options,
-                    providers=self.providers
-                )
-                
-                # Verify active provider
-                active_provider = self.sentiment_session.get_providers()[0]
-                logger.info(f"Successfully loaded models. Active Execution Provider: {active_provider}")
-            else:
-                logger.warning(f"ONNX models not found at {MODELS_DIR}. Running in AMD hardware simulation mode for demo.")
+            if not os.path.exists(SENTIMENT_MODEL_PATH) or not os.path.exists(FAKE_REVIEW_MODEL_PATH):
+                 raise FileNotFoundError(f"ONNX models not found in {MODELS_DIR}. Ensure sentiment_model.onnx and trust_score_model.onnx exist.")
+            
+            session_options = ort.SessionOptions()
+            session_options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
+            
+            logger.info(f"Loading Quantized Sentiment Model from {SENTIMENT_MODEL_PATH}")
+            self.sentiment_session = ort.InferenceSession(
+                SENTIMENT_MODEL_PATH, 
+                sess_options=session_options, 
+                providers=self.providers
+            )
+            
+            logger.info(f"Loading Fake Review Model from {FAKE_REVIEW_MODEL_PATH}")
+            self.fake_review_session = ort.InferenceSession(
+                FAKE_REVIEW_MODEL_PATH,
+                sess_options=session_options,
+                providers=self.providers
+            )
+            
+            # Verify active provider
+            active_provider = self.sentiment_session.get_providers()[0]
+            logger.info(f"Successfully loaded models. Active Execution Provider: {active_provider}")
                 
             self.is_initialized = True
             
@@ -102,33 +100,13 @@ class TrustInferenceEngine:
             }
             
             # 2. Run Inference
-            if self.sentiment_session and self.fake_review_session:
-                # Real ONNX Hardware Execution
-                sentiment_logits = self.sentiment_session.run(None, ort_inputs)[0]
-                fake_logits = self.fake_review_session.run(None, ort_inputs)[0]
-                
-                # Convert logits to usable scores
-                sentiment_score = float(np.tanh(sentiment_logits[0][1] - sentiment_logits[0][0]))
-                authenticity_score = float(1.0 / (1.0 + np.exp(-fake_logits[0][1]))) # Sigmoid
-            else:
-                # Simulation Mode (If weights are missing)
-                # We analyze the text deterministically to simulate model behavior
-                text_lower = review.lower()
-                
-                # Simple heuristic mapping for demo sentiment
-                if any(word in text_lower for word in ["excellent", "great", "perfect", "amazing", "love"]):
-                    sentiment_score = np.random.uniform(0.6, 0.95)
-                elif any(word in text_lower for word in ["terrible", "awful", "bad", "worst", "broken", "scam"]):
-                    sentiment_score = np.random.uniform(-0.95, -0.4)
-                else:
-                    sentiment_score = np.random.uniform(-0.2, 0.4)
-                    
-                # Simple heuristic for fake reviews (excessive caps/exclamation or very generic)
-                is_suspicious = review.isupper() or review.count('!') > 3 or len(review.split()) < 4
-                if is_suspicious:
-                    authenticity_score = np.random.uniform(0.1, 0.4)
-                else:
-                    authenticity_score = np.random.uniform(0.75, 0.99)
+            # Real ONNX Hardware Execution
+            sentiment_logits = self.sentiment_session.run(None, ort_inputs)[0]
+            fake_logits = self.fake_review_session.run(None, ort_inputs)[0]
+            
+            # Convert logits to usable scores
+            sentiment_score = float(np.tanh(sentiment_logits[0][1] - sentiment_logits[0][0]))
+            authenticity_score = float(1.0 / (1.0 + np.exp(-fake_logits[0][1]))) # Sigmoid
             
             results.append({
                 "text": review,

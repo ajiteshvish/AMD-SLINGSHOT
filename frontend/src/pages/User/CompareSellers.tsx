@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
@@ -6,24 +7,60 @@ import { ArrowLeft, ShieldCheck, ShieldAlert, BarChart3, Activity } from 'lucide
 
 const CompareSellers = () => {
   const navigate = useNavigate();
+  const [loadingMetrics, setLoadingMetrics] = useState(true);
+  const [sellerA, setSellerA] = useState<any>(null);
+  const [sellerB, setSellerB] = useState<any>(null);
 
   // Try to find real seller data from hook
   const { data: sellers } = useSellers({ limit: 10 });
   
-  // Create mock side-by-side comparison
-  const sellerA = sellers?.[0] ? {
-    ...sellers[0],
-    trustScore: 94,
-    riskLevel: 'Low',
-    breakdown: { delivery: 98, authenticity: 91, support: 96, refund: 95 }
-  } : null;
-
-  const sellerB = sellers?.[1] ? {
-    ...sellers[1],
-    trustScore: 72,
-    riskLevel: 'Medium',
-    breakdown: { delivery: 82, authenticity: 65, support: 78, refund: 80 }
-  } : null;
+  useEffect(() => {
+    const fetchSellersMetrics = async () => {
+      if (!sellers || sellers.length < 2) return;
+      
+      try {
+        setLoadingMetrics(true);
+        const { api } = await import('../../services/api');
+        
+        // Fetch real breakdown scores for the top two sellers
+        const [scoreA, scoreB] = await Promise.all([
+          api.getTrustScore(sellers[0].id),
+          api.getTrustScore(sellers[1].id)
+        ]);
+        
+        setSellerA({
+          ...sellers[0],
+          trustScore: scoreA.overall_score || 0,
+          riskLevel: scoreA.overall_score >= 80 ? 'Low' : scoreA.overall_score >= 60 ? 'Medium' : 'High',
+          breakdown: { 
+            delivery: scoreA.delivery_reliability || 0, 
+            authenticity: scoreA.review_authenticity || 0, 
+            support: scoreA.customer_support || 0, 
+            refund: scoreA.refund_fairness || 0 
+          }
+        });
+        
+        setSellerB({
+          ...sellers[1],
+           trustScore: scoreB.overall_score || 0,
+           riskLevel: scoreB.overall_score >= 80 ? 'Low' : scoreB.overall_score >= 60 ? 'Medium' : 'High',
+           breakdown: { 
+             delivery: scoreB.delivery_reliability || 0, 
+             authenticity: scoreB.review_authenticity || 0, 
+             support: scoreB.customer_support || 0, 
+             refund: scoreB.refund_fairness || 0 
+           }
+        });
+        
+      } catch (err) {
+        console.error("Failed to load compare metrics", err);
+      } finally {
+        setLoadingMetrics(false);
+      }
+    };
+    
+    fetchSellersMetrics();
+  }, [sellers]);
 
   return (
     <div className="flex min-h-screen bg-trustora-bg">
@@ -47,9 +84,10 @@ const CompareSellers = () => {
                <p className="text-muted-foreground mt-1">Side-by-side trust analysis to help you make standard comparisons.</p>
             </div>
 
-            {!sellerA || !sellerB ? (
-                <div className="text-center py-12 text-muted-foreground bg-card border rounded-2xl">
-                    Loading comparison subjects...
+            {loadingMetrics || !sellerA || !sellerB ? (
+                <div className="text-center py-12 text-muted-foreground bg-card border rounded-2xl flex items-center justify-center gap-3">
+                    <Activity className="animate-spin text-primary" size={24} />
+                    Calculating comparative metrics across real-time AI endpoints...
                 </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -75,8 +113,8 @@ const CompareSellers = () => {
                             <span className="text-3xl font-bold text-foreground leading-none">{sellerA.trustScore}</span>
                         </div>
                         </div>
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1 bg-green-500/10 text-green-500`}>
-                            <ShieldCheck size={12}/> High Trust
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1 ${sellerA.trustScore >= 80 ? 'bg-green-500/10 text-green-500' : 'bg-amber-500/10 text-amber-500'}`}>
+                            {sellerA.trustScore >= 80 ? <ShieldCheck size={12}/> : <ShieldAlert size={12}/>} {sellerA.riskLevel} Risk
                         </span>
                     </div>
 
@@ -107,7 +145,7 @@ const CompareSellers = () => {
                            <Activity size={16}/> Trend
                        </h3>
                        <div className="h-20 bg-input/20 border border-border/50 rounded flex items-center justify-center flex-col text-green-500 text-sm font-medium">
-                           +4% Last Month
+                           Powered by AMD ONNX
                        </div>
                     </div>
                 </div>
@@ -134,8 +172,8 @@ const CompareSellers = () => {
                             <span className="text-3xl font-bold text-foreground leading-none">{sellerB.trustScore}</span>
                         </div>
                         </div>
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1 bg-amber-500/10 text-amber-500`}>
-                            <ShieldAlert size={12}/> Medium Risk
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1 ${sellerB.trustScore >= 80 ? 'bg-green-500/10 text-green-500' : 'bg-amber-500/10 text-amber-500'}`}>
+                            {sellerB.trustScore >= 80 ? <ShieldCheck size={12}/> : <ShieldAlert size={12}/>} {sellerB.riskLevel} Risk
                         </span>
                     </div>
 
@@ -165,8 +203,8 @@ const CompareSellers = () => {
                        <h3 className="font-bold border-b border-border pb-2 flex items-center gap-2">
                            <Activity size={16}/> Trend
                        </h3>
-                       <div className="h-20 bg-input/20 border border-border/50 rounded flex items-center justify-center flex-col text-amber-500 text-sm font-medium">
-                           -2% Last Month
+                       <div className="h-20 bg-input/20 border border-border/50 rounded flex items-center justify-center flex-col text-primary text-sm font-medium">
+                           Powered by AMD ONNX
                        </div>
                     </div>
                 </div>
