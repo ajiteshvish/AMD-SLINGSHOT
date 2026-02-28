@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { Check } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
+  const navigate = useNavigate();
+
   const plans = [
     {
       name: "Starter",
@@ -15,7 +18,8 @@ const Pricing = () => {
         "Access to community forums"
       ],
       cta: "Get Started Free",
-      highlighted: false
+      highlighted: false,
+      onClick: () => navigate('/login')
     },
     {
       name: "Pro",
@@ -30,22 +34,8 @@ const Pricing = () => {
         "Detailed trust reports"
       ],
       cta: "Start 14-day Free Trial",
-      highlighted: true
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      description: "For marketplaces & large platforms",
-      features: [
-        "All Pro features included",
-        "Custom AI model tuning",
-        "Dedicated AMD hardware",
-        "Full API & webhook access",
-        "SLA & priority support",
-        "On-premise deployment"
-      ],
-      cta: "Contact Sales",
-      highlighted: false
+      highlighted: true,
+      onClick: () => alert('14-day free trial is coming soon! Stay tuned.')
     }
   ];
 
@@ -63,7 +53,7 @@ const Pricing = () => {
           <div className="inline-flex items-center bg-white/[0.03] rounded-full p-1">
             <button
               className={`px-6 py-2.5 rounded-full text-sm font-medium transition-colors ${!isAnnual
-                  ? 'bg-white/[0.07] text-white'
+                  ? 'bg-white/[0.1] text-white'
                   : 'text-zinc-400 hover:text-white'
                 }`}
               onClick={() => setIsAnnual(false)}
@@ -72,7 +62,7 @@ const Pricing = () => {
             </button>
             <button
               className={`px-6 py-2.5 rounded-full text-sm font-medium transition-colors ${isAnnual
-                  ? 'bg-white/[0.07] text-white'
+                  ? 'bg-white/[0.1] text-white'
                   : 'text-zinc-400 hover:text-white'
                 }`}
               onClick={() => setIsAnnual(true)}
@@ -82,12 +72,13 @@ const Pricing = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        {/* Changed to grid-cols-2 since we removed the 3rd plan */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {plans.map((plan) => (
             <div
               key={plan.name}
               className={`relative rounded-2xl border ${plan.highlighted
-                  ? 'border-white/10 bg-white/[0.02] scale-[1.02] shadow-xl'
+                  ? 'border-white/20 bg-white/[0.02] scale-[1.02] shadow-xl'
                   : 'border-white/[0.08] hover:border-white/10'
                 } p-6 transition-all duration-300`}
             >
@@ -127,8 +118,11 @@ const Pricing = () => {
                 ))}
               </div>
 
+              <div className="flex-grow"></div>
+              
               <button
-                className={`w-full py-2.5 px-4 rounded-xl text-sm font-medium transition-colors ${plan.highlighted
+                onClick={plan.onClick}
+                className={`w-full py-2.5 px-4 rounded-xl text-sm font-medium transition-colors mt-auto ${plan.highlighted
                     ? 'bg-white text-black hover:bg-white/90'
                     : 'border border-white/10 text-white hover:bg-white/[0.03]'
                   }`}

@@ -6,9 +6,9 @@ import { GlowButton } from '@/components/ui/pulse-beams';
 import RadialOrbitalTimeline from '@/components/ui/radial-orbital-timeline';
 import Pricing from '@/components/ui/pricing-component';
 import { BlurFade } from '@/components/ui/blur-fade';
-import { MacbookScroll } from '@/components/ui/macbook-scroll';
 import { cn } from '@/lib/utils';
 import Navbar from '../components/Navbar';
+import { ShaderAnimation } from '@/components/ui/shader-animation';
 import './Home.css';
 
 const reviewDekhoTimelineData = [
@@ -84,15 +84,33 @@ const Home = () => {
   return (
     <div className="home-page">
       <div className="dotted-pattern pointer-events-none"></div>
-      <Navbar logoHeight={60} /> {/* Increase this value to make logo bigger */}
+      
+      {/* Dynamic Floating Background Elements for Side Gaps */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <motion.div 
+          animate={{ y: [0, -20, 0], x: [0, 10, 0], opacity: [0.1, 0.3, 0.1] }} 
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[25%] -left-32 w-64 h-64 bg-emerald-500/20 rounded-full blur-[80px]" 
+        />
+        <motion.div 
+          animate={{ y: [0, 30, 0], x: [0, -15, 0], opacity: [0.1, 0.2, 0.1] }} 
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute top-[50%] -right-32 w-80 h-80 bg-purple-500/20 rounded-full blur-[100px]" 
+        />
+        <motion.div 
+          animate={{ y: [0, -40, 0], opacity: [0.05, 0.15, 0.05] }} 
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-[15%] -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]" 
+        />
+      </div>
+      <Navbar />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20 pb-12">
         
-        {/* Animated Background Orbs - Simplified for performance */}
+        {/* Shader Animation Background */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-[20%] -right-[10%] w-[800px] h-[800px] rounded-full bg-blue-600/10 blur-[120px] animate-pulse" />
-          <div className="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] rounded-full bg-purple-600/10 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+          <ShaderAnimation />
         </div>
 
         {/* Overlay to ensure text readability */}
@@ -138,7 +156,7 @@ const Home = () => {
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
             <BlurFade delay={0.2} inView>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-4 mb-6 tracking-tight">
                 Everything You Need to<br/>Verify Sellers Instantly
@@ -189,8 +207,8 @@ const Home = () => {
       {/* Radial Orbital Timeline */}
       <section className="relative bg-black overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-        <div className="text-center pt-24 pb-6 relative z-10 pointer-events-none">
-          <BlurFade delay={0.2} inView>
+        <div className="text-center pt-16 md:pt-24 pb-2 relative z-10 pointer-events-none">
+            <BlurFade delay={0.2} inView>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-4 mb-4 tracking-tight">
               The Trust Analysis Pipeline
             </h2>
@@ -206,23 +224,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Macbook Scroll Section */}
-      <section className="relative overflow-hidden bg-black">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-        <div className="w-full overflow-hidden bg-black">
-          <MacbookScroll
-            title={
-              <span className="text-white">
-                See ReviewDekho In Action <br />
-                <span className="text-gray-400 text-xl font-normal">Real-time seller intelligence, right on your screen.</span>
-              </span>
-            }
-            src="/dashboard-preview.png"
-            showGradient={false}
-          />
-        </div>
-      </section>
-
       {/* Pricing Section */}
       <section id="pricing" className="relative overflow-hidden scroll-mt-20">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
@@ -231,17 +232,11 @@ const Home = () => {
 
 
       {/* Footer */}
-      <footer className="border-t border-white/10 bg-black">
+      <footer className="relative z-10 border-t border-white/10 bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-10 md:py-16">
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             <div className="col-span-2 sm:col-span-2 md:col-span-1">
-              <div className="flex items-center gap-3 mb-4">
-                <img 
-                  src="/logo.png" 
-                  alt="ReviewDekho Logo" 
-                  style={{ height: '64px' }} /* Adjust this value to change footer logo size */
-                  className="w-auto drop-shadow-lg" 
-                />
+              <div className="mb-4">
                 <h3 className="text-3xl font-bold text-white tracking-tight">ReviewDekho</h3>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
@@ -253,9 +248,9 @@ const Home = () => {
             <div>
               <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Product</h4>
               <ul className="space-y-3">
-                <li><Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors text-sm">Dashboard</Link></li>
-                <li><Link to="/intelligence" className="text-gray-400 hover:text-white transition-colors text-sm">Intelligence</Link></li>
-                <li><Link to="/compare" className="text-gray-400 hover:text-white transition-colors text-sm">Compare Sellers</Link></li>
+                <li><Link to="/login" className="text-gray-400 hover:text-white transition-colors text-sm">Dashboard</Link></li>
+                <li><Link to="/login" className="text-gray-400 hover:text-white transition-colors text-sm">Intelligence</Link></li>
+                <li><Link to="/login" className="text-gray-400 hover:text-white transition-colors text-sm">Compare Sellers</Link></li>
                 <li><Link to="/register" className="text-gray-400 hover:text-white transition-colors text-sm">Get Started</Link></li>
               </ul>
             </div>
@@ -263,10 +258,10 @@ const Home = () => {
             {/* Resources */}
             <div>
               <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Resources</h4>
-              <ul className="space-y-3">
-                <li><a href="https://onnxruntime.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">ONNX Runtime</a></li>
-                <li><a href="https://www.amd.com/en/products/software/rocm.html" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">AMD ROCm</a></li>
-                <li><a href="https://www.amd.com/en/developer/zendnn.html" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">ZenDNN</a></li>
+              <ul className="space-y-3 relative z-50">
+                <li><a href="https://onnxruntime.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm relative z-50 inline-block w-full">ONNX Runtime</a></li>
+                <li><a href="https://www.amd.com/en/products/software/rocm.html" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm relative z-50 inline-block w-full">AMD ROCm</a></li>
+                <li><a href="https://www.amd.com/en/developer/zendnn.html" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm relative z-50 inline-block w-full">ZenDNN</a></li>
               </ul>
             </div>
 

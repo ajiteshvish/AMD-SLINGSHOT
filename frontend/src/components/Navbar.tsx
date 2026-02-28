@@ -12,11 +12,9 @@ const navItems = [
   { name: 'Our Team', url: '/team', icon: Users },
 ];
 
-interface NavbarProps {
-  logoHeight?: number;
-}
+interface NavbarProps {}
 
-const Navbar = ({ logoHeight = 16 }: NavbarProps) => {
+const Navbar = ({}: NavbarProps) => {
   let authContext;
   try {
     authContext = useAuth();
@@ -27,12 +25,7 @@ const Navbar = ({ logoHeight = 16 }: NavbarProps) => {
   const { user, role, signOut } = authContext;
   const navigate = useNavigate();
   
-  // Responsive logo height scaling - Restored for Impact
-  const desktopLogoHeight = logoHeight; // Use the full user-defined height (60)
-  const mobileLogoHeight = 25; // Bold and clear on mobile
-  
-  const currentLogoHeight = typeof window !== 'undefined' && window.innerWidth < 640 ? mobileLogoHeight : desktopLogoHeight;
-  const currentPadding = 'pt-8 pl-6 sm:pl-10'; // Keep the breathable padding
+
 
   const handleSignOut = async () => {
     await signOut();
@@ -46,18 +39,7 @@ const Navbar = ({ logoHeight = 16 }: NavbarProps) => {
 
   return (
     <>
-      {/* Logo - absolute top left */}
-      <Link 
-        to="/" 
-        className={`absolute top-0 left-0 z-[100] transition-all duration-500 ease-in-out ${currentPadding}`}
-      >
-        <img 
-          src="/logo.png" 
-          alt="ReviewDekho" 
-          style={{ height: `${currentLogoHeight * 4}px` }} 
-          className="w-auto drop-shadow-xl transition-all duration-500 ease-in-out" 
-        />
-      </Link>
+
 
       {/* Tubelight NavBar - centered */}
       <NavBar items={navItems} />
