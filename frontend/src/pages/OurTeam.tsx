@@ -33,7 +33,7 @@ const teamMembers = [
 const OurTeam = () => {
   return (
     <div className="min-h-screen bg-black">
-      <Navbar logoHeight={60} />
+      <Navbar />
 
       {/* Hero */}
       <section className="relative pt-32 pb-16 overflow-hidden">
