@@ -120,6 +120,6 @@ URTSS focuses on **privacy-first, local AI execution** powered by AMD technologi
 
 ## 📌 One-Line Summary
 
-URTSS delivers AI-driven, explainable retailer trust scores with privacy-first local execution to transform how consumers evaluate sellers in online marketplaces.
+URTSS delivers AI-driven, explainable retailer trust scores with privacy-first local execution to transform how consumers evaluate sellers in online marketplaces
 
 ---
