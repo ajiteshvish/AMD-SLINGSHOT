@@ -6,26 +6,26 @@ import Navbar from '../components/Navbar';
 const teamMembers = [
   {
     name: 'Sejal Choudhary',
-    role: 'AI/ML Engineer',
-    bio: 'Specializes in building intelligent systems with deep expertise in NLP and sentiment analysis. Drives the core trust-scoring engine behind ReviewDekho.',
+    role: 'Backend & AI Integration',
+    bio: 'Handles backend architecture, API development, database management, and integration of AI models. Responsible for implementing sentiment analysis, fake review detection, trust score computation, and ensuring scalable and secure data processing.',
     image: '/team/team-sejal.jpeg',
-    linkedin: '#',
-    github: '#',
-  },
-  {
-    name: 'Nandita Rai',
-    role: 'Full Stack Developer',
-    bio: 'Passionate about crafting beautiful, performant web applications. Architects the frontend experience and backend API integrations that power ReviewDekho.',
-    image: '/team/team-nandita.jpeg',
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/sejal-choudhary-910301348/',
     github: '#',
   },
   {
     name: 'Ajitesh Vishwakarma',
-    role: 'Backend & AMD Integration Lead',
-    bio: 'Expert in AMD hardware optimization and backend architecture. Ensures ReviewDekho runs at peak performance using ROCm, ZenDNN, and ONNX Runtime.',
+    role: 'AMD Integration & Optimization Lead',
+    bio: 'Optimizes AI model performance using AMD technologies such as ONNX Runtime, ROCm, ZenDNN, and INT8 quantization. Ensures efficient inference, reduced latency, hardware acceleration, and scalable deployment aligned with AMD ecosystem requirements.',
     image: '/team/team-ajitesh.jpeg',
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/ajiteshvish',
+    github: '#',
+  },
+  {
+    name: 'Nandita Rai',
+    role: 'Frontend & UI/UX',
+    bio: 'Responsible for designing and developing the user interface of ReviewDekho, ensuring an intuitive, responsive, and visually appealing experience. Focuses on dashboard design, seller comparison views, trust score visualization, and seamless user interaction using modern SaaS UI principles.',
+    image: '/team/team-nandita.jpeg',
+    linkedin: 'https://www.linkedin.com/in/nandita-rai-510bb82aa/',
     github: '#',
   },
 ];
@@ -64,7 +64,7 @@ const OurTeam = () => {
 
       {/* Team Cards */}
       <section className="pb-24 px-6 lg:px-12">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {teamMembers.map((member, i) => (
             <motion.div
               key={member.name}
@@ -75,34 +75,39 @@ const OurTeam = () => {
               className="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-[0_0_60px_rgba(59,130,246,0.1)]"
             >
               {/* Full Image */}
-              <div className="relative w-full aspect-[3/4] bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10">
+              <div className="relative w-full aspect-[2/3] bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';
                   }}
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-0 pointer-events-none" />
               </div>
 
               {/* HeroUI-style Blurred Footer */}
-              <div className="absolute bottom-2 left-2 right-2 z-10">
-                <div className="backdrop-blur-xl bg-black/30 border border-white/20 rounded-xl p-4 shadow-lg">
-                  <div className="flex items-center justify-between mb-2">
-                    <div>
-                      <h3 className="text-lg font-bold text-white">{member.name}</h3>
-                      <p className="text-blue-300 text-xs font-medium uppercase tracking-wider">{member.role}</p>
+              <div className="absolute bottom-3 left-3 right-3 z-10">
+                <div className="backdrop-blur-xl bg-black/40 border border-white/20 rounded-xl p-5 shadow-lg min-h-[170px] h-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-0.5">{member.name}</h3>
+                        <p className="text-blue-400 text-[11px] font-bold uppercase tracking-widest">{member.role}</p>
+                      </div>
                     </div>
+                    <p className="text-white/70 text-sm leading-relaxed mb-4">{member.bio}</p>
                   </div>
-                  <p className="text-white/70 text-xs leading-relaxed mb-3">{member.bio}</p>
-                  <div className="flex gap-2">
+                  <div className="mt-auto">
                     <a
                       href={member.linkedin}
-                      className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/10 text-white/80 hover:bg-white/20 hover:text-white transition-all duration-300 flex items-center gap-1.5 text-xs"
+                      className="w-full py-2.5 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black transition-all duration-300 flex items-center justify-center gap-2 text-sm font-semibold group"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <Linkedin size={12} /> LinkedIn
+                      <Linkedin size={16} className="text-[#0A66C2] group-hover:text-[#0A66C2] transition-colors" /> LinkedIn
                     </a>
                   </div>
                 </div>

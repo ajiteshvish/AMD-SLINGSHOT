@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShieldCheck, BarChart3, Database, Cpu, Eye, Radar, Bell, Fingerprint, LayoutDashboard, Lock } from 'lucide-react';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
-import { GlowButton } from '@/components/ui/pulse-beams';
 import RadialOrbitalTimeline from '@/components/ui/radial-orbital-timeline';
 import Pricing from '@/components/ui/pricing-component';
 import { BlurFade } from '@/components/ui/blur-fade';
@@ -106,7 +105,7 @@ const Home = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20 pb-12">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-40 sm:pt-20 pb-12">
         
         {/* Shader Animation Background */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -136,18 +135,6 @@ const Home = () => {
             </p>
           </BlurFade>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
-          >
-            <Link to="/register">
-              <GlowButton className="text-lg">
-                Get Started
-              </GlowButton>
-            </Link>
-          </motion.div>
         </div>
       </section>
 
@@ -251,7 +238,7 @@ const Home = () => {
                 <li><Link to="/login" className="text-gray-400 hover:text-white transition-colors text-sm">Dashboard</Link></li>
                 <li><Link to="/login" className="text-gray-400 hover:text-white transition-colors text-sm">Intelligence</Link></li>
                 <li><Link to="/login" className="text-gray-400 hover:text-white transition-colors text-sm">Compare Sellers</Link></li>
-                <li><Link to="/register" className="text-gray-400 hover:text-white transition-colors text-sm">Get Started</Link></li>
+                <li><Link to="/login" className="text-gray-400 hover:text-white transition-colors text-sm">Get Started</Link></li>
               </ul>
             </div>
 

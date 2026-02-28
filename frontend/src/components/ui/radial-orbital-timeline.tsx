@@ -256,7 +256,7 @@ export default function RadialOrbitalTimeline({
 
                 {/* Expanded card */}
                 {isExpanded && (
-                  <Card className="absolute top-24 left-1/2 -translate-x-1/2 w-[300px] sm:w-[340px] bg-black/95 backdrop-blur-xl border-white/20 shadow-2xl overflow-visible z-[1000] rounded-xl"
+                  <Card className="absolute top-24 left-1/2 -translate-x-1/2 w-[300px] sm:w-[340px] max-md:fixed max-md:top-1/2 max-md:left-1/2 max-md:-translate-y-1/2 max-md:w-[90vw] max-md:max-w-[340px] bg-black/95 backdrop-blur-xl border-white/20 shadow-2xl overflow-visible z-[1000] rounded-xl"
                     style={{ boxShadow: `0 0 40px 4px ${color.hex}33` }}
                   >
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/40" />

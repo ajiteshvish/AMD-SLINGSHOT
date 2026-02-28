@@ -44,8 +44,8 @@ const Navbar = ({}: NavbarProps) => {
       {/* Tubelight NavBar - centered */}
       <NavBar items={navItems} />
 
-      {/* Auth actions - absolute top right, hidden on mobile */}
-      <div className="absolute top-0 right-0 z-[100] transition-all duration-500 ease-in-out hidden sm:flex items-center gap-2 md:gap-3 pt-8 pr-6 sm:pr-10">
+      {/* Auth actions */}
+      <div className="absolute top-[80px] sm:top-0 left-1/2 sm:left-auto sm:right-0 -translate-x-1/2 sm:translate-x-0 z-[100] transition-all duration-500 ease-in-out flex items-center gap-2 md:gap-3 sm:pt-8 sm:pr-6 md:pr-10 w-max">
         {user ? (
           <>
              <GlowButton onClick={handleDashboardClick} className="text-sm">
