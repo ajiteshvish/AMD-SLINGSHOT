@@ -88,9 +88,8 @@ const OurTeam = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-0 pointer-events-none" />
               </div>
 
-              {/* HeroUI-style Blurred Footer */}
-              <div className="absolute bottom-3 left-3 right-3 z-10">
-                <div className="backdrop-blur-xl bg-black/40 border border-white/20 rounded-xl p-5 shadow-lg min-h-[170px] h-full flex flex-col justify-between">
+              <div className="absolute bottom-3 left-3 right-3 z-10 w-auto">
+                <div className="backdrop-blur-xl bg-black/40 border border-white/20 rounded-xl p-5 shadow-lg h-[260px] sm:h-[280px] lg:h-[270px] flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <div>
